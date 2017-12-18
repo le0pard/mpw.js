@@ -16,13 +16,9 @@ const preScripts = {
   production: []
 };
 
-const preScriptsEnv = isProduction ? preScripts['production'] : preScripts['development'];
-
-const browserSupport = {
-  browsers: [
-    'last 2 version'
-  ]
-}
+const preScriptsEnv = isProduction ?
+  preScripts['production'] :
+  preScripts['development'];
 
 const cssLoaders = [
   {
@@ -30,13 +26,13 @@ const cssLoaders = [
     options: {
       modules: false,
       minimize: isProduction,
-      sourceMap: !isProduction
+      sourceMap: true
     }
   },
   {
     loader: 'postcss-loader',
     options: {
-      sourceMap: !isProduction,
+      sourceMap: true,
       plugins: function() {
         return [
           require('postcss-import')({
@@ -44,7 +40,9 @@ const cssLoaders = [
           }),
           require('postcss-url')(),
           require('postcss-cssnext')({
-            browsers: browserSupport.browsers,
+            browsers: [
+              'last 2 version'
+            ],
             features: {
               rem: false
             }
@@ -109,7 +107,7 @@ const config = {
             loader: 'sass-loader',
             options: {
               indentedSyntax: false,
-              sourceMap:      !isProduction,
+              sourceMap:      true,
               includePaths:   [path.join(__dirname, 'source', 'webpack', 'css')]
             }
           })
@@ -123,7 +121,7 @@ const config = {
             loader: 'sass-loader',
             options: {
               indentedSyntax: true,
-              sourceMap:      !isProduction,
+              sourceMap:      true,
               includePaths:   [path.join(__dirname, 'source', 'webpack', 'css')]
             }
           })
