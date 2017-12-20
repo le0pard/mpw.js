@@ -1,56 +1,53 @@
 import {CACHE} from './lib/serviceWorker/constants'
 
-self.addEventListener('install', (evt) => {
-  console.log('The service worker is being installed.')
+const NETWORK_TIMEOUT = 400
 
-  evt.waitUntil(caches.open(CACHE).then((cache) => {
-    return fetch('/assets-manifest.json').then((response) => {
-      return response.json()
-    }).then((data) => {
-      const files = Object.keys(data).
-        map((key) => data[key]).
-        filter((file) => /^app/i.test(file))
-      return cache.addAll(['./index.html'].concat(files))
-    }).then(() => self.skipWaiting())
-  }))
+self.addEventListener('install', (evt) => {
+  evt.waitUntil(precache())
 })
 
 self.addEventListener('fetch', (evt) => {
-  console.log('The service worker is serving the asset.')
-
-  evt.respondWith(fromCache(evt.request))
-
-  evt.waitUntil(
-    update(evt.request).then(refresh)
-  )
+  evt.respondWith(respondToFetch(evt))
 })
 
-const fromCache = (request) => {
+self.addEventListener('activate', (event) => {
+  event.waitUntil(self.clients.claim())
+})
+
+const precache = () => {
+  return caches.open(CACHE).then(function (cache) {
+    return cache.addAll([
+      './index.html',
+      './app.js',
+      './app.css'
+    ]);
+  });
+}
+
+const respondToFetch = (evt) => {
   return caches.open(CACHE).then((cache) => {
-    return cache.match(request)
+    return fromNetwork(cache, evt.request, NETWORK_TIMEOUT)
+      .catch(() => fromCache(cache, evt.request))
   })
 }
 
-const update = (request) => {
-  return caches.open(CACHE).then((cache) => {
-    return fetch(request).then((response) => {
+const fromNetwork = (cache, request, timeout) => {
+  return new Promise((fulfill, reject) => {
+    const timeoutId = setTimeout(reject, timeout)
+
+    fetch(request).then((response) => {
+      clearTimeout(timeoutId)
       return cache.put(request, response.clone()).then(() => {
-        return response
+        return fulfill(response)
+      }).catch(() => {
+        return fulfill(response)
       })
-    })
+    }).catch(reject)
   })
 }
 
-const refresh = (response) => {
-  return self.clients.matchAll().then((clients) => {
-    clients.forEach((client) => {
-      const message = {
-        type: 'refresh',
-        url: response.url,
-        eTag: response.headers.get('ETag'),
-        lastModified: response.headers.get('Last-Modified')
-      }
-      client.postMessage(JSON.stringify(message))
-    })
+const fromCache = (cache, request) => {
+  return cache.match(request).then((matching) => {
+    return matching || Promise.reject('no-match')
   })
 }
