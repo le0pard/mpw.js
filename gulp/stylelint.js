@@ -3,7 +3,7 @@ const gulpStylelint = require('gulp-stylelint')
 
 gulp.task('stylelint', function() {
   return gulp
-    .src('source/webpack/**/*.sass')
+    .src('webpack/**/*.sass')
     .pipe(gulpStylelint({
       syntax: 'sugarss',
       failAfterError: true,

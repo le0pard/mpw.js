@@ -9,8 +9,6 @@ module MpwHelpers
     %(<link rel='stylesheet' href="#{asset_path("#{name}.css")}"></link>)
   end
 
-  private
-
   def asset_path(name)
     public_manifest_path = File.expand_path File.join(
       File.dirname(__FILE__),

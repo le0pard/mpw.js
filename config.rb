@@ -28,7 +28,7 @@ activate :external_pipeline,
   name: :webpack,
   command: build? ?
     'NODE_ENV=production ./node_modules/.bin/webpack --bail' :
-    './node_modules/.bin/webpack --watch -d --progress --color',
+    './node_modules/.bin/webpack --watch -d --color',
   source: ".tmp/dist",
   latency: 1
 

@@ -58,7 +58,8 @@ const cssLoaders = [
 const config = {
   target: 'web',
   entry: {
-    'app': preScriptsEnv.concat(['./source/webpack/app.js'])
+    'app': preScriptsEnv.concat(['./webpack/app.js']),
+    'service-worker': preScriptsEnv.concat(['./webpack/serviceWorker.js'])
   },
 
   output: {
@@ -74,7 +75,7 @@ const config = {
 
   resolve: {
     modules: [
-      path.join(__dirname, 'source', 'webpack'),
+      path.join(__dirname, 'webpack'),
       path.join(__dirname, 'node_modules')
     ],
     extensions: ['.js', '.jsx', '.json']
@@ -108,7 +109,7 @@ const config = {
             options: {
               indentedSyntax: false,
               sourceMap:      true,
-              includePaths:   [path.join(__dirname, 'source', 'webpack', 'css')]
+              includePaths:   [path.join(__dirname, 'webpack', 'css')]
             }
           })
         })
@@ -122,7 +123,7 @@ const config = {
             options: {
               indentedSyntax: true,
               sourceMap:      true,
-              includePaths:   [path.join(__dirname, 'source', 'webpack', 'css')]
+              includePaths:   [path.join(__dirname, 'webpack', 'css')]
             }
           })
         })

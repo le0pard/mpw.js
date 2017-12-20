@@ -1,0 +1,30 @@
+@import 'base/variables'
+
+.app-layout
+  border-radius: $windowBorderRadius
+
+  &__header-arrow
+    position: absolute
+    top: $headerArrowSize / 4
+    left: 50%
+    margin-left: -$headerArrowSize / 2
+    height: $headerArrowSize
+    width: $headerArrowSize
+    transform: rotate(45deg)
+    background-color: $windowBackgroundColor
+
+  &__window
+    width: $appWidth
+    position: absolute
+    top: $headerArrowSize / 2
+    border-top-left-radius: $windowBorderRadius
+    border-top-right-radius: $windowBorderRadius
+
+  &__window-content
+    background-color: $windowContentBackgroundColor
+    position: relative
+    overflow-y: auto
+    height: $appHeight - $toolbarHeight - $headerArrowSize / 2 - $toolbarBorderBottom
+    flex: 1
+    border-bottom-left-radius: $windowBorderRadius
+    border-bottom-right-radius: $windowBorderRadius
