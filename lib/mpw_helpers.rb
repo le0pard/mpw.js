@@ -12,7 +12,7 @@ module MpwHelpers
   def asset_path(name)
     public_manifest_path = File.expand_path File.join(
       File.dirname(__FILE__),
-      '../.tmp/dist/manifest.json',
+      '../.tmp/dist/assets-manifest.json',
     )
     manifest_data = if File.exist?(public_manifest_path)
                       JSON.parse(File.read(public_manifest_path))

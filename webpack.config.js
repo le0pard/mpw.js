@@ -70,7 +70,8 @@ const config = {
     path: path.join(__dirname, '.tmp', 'dist'),
     publicPath: '/',
 
-    filename: isProduction ? '[name]-[chunkhash].js' : '[name].js'
+    // filename: isProduction ? '[name]-[chunkhash].js' : '[name].js'
+    filename: '[name].js'
   },
 
   resolve: {
@@ -133,7 +134,8 @@ const config = {
 
   plugins: [
     new ExtractTextPlugin({
-      filename: isProduction ? '[name]-[contenthash].css' : '[name].css',
+      // filename: isProduction ? '[name]-[contenthash].css' : '[name].css',
+      filename: '[name].css',
       allChunks: true
     })
   ]
@@ -164,6 +166,7 @@ if (isProduction) {
 
 config.plugins.push(
   new ManifestPlugin({
+    fileName: 'assets-manifest.json',
     publicPath: config.output.publicPath,
     writeToFileEmit: process.env.NODE_ENV !== 'test'
   })

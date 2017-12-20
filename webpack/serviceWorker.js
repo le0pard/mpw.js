@@ -4,11 +4,14 @@ self.addEventListener('install', (evt) => {
   console.log('The service worker is being installed.')
 
   evt.waitUntil(caches.open(CACHE).then((cache) => {
-    cache.addAll([
-      './index.html',
-      './app.js',
-      './app.css'
-    ])
+    return fetch('/assets-manifest.json').then((response) => {
+      return response.json()
+    }).then((data) => {
+      const files = Object.keys(data).
+        map((key) => data[key]).
+        filter((file) => /^app/i.test(file))
+      return cache.addAll(['./index.html'].concat(files))
+    }).then(() => self.skipWaiting())
   }))
 })
 
@@ -44,7 +47,8 @@ const refresh = (response) => {
       const message = {
         type: 'refresh',
         url: response.url,
-        eTag: response.headers.get('ETag')
+        eTag: response.headers.get('ETag'),
+        lastModified: response.headers.get('Last-Modified')
       }
       client.postMessage(JSON.stringify(message))
     })
