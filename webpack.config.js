@@ -5,6 +5,7 @@ const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const OfflinePlugin = require('offline-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 // set NODE_ENV=production on the environment to add asset fingerprints
@@ -58,8 +59,7 @@ const cssLoaders = [
 const config = {
   target: 'web',
   entry: {
-    'app': preScriptsEnv.concat(['./webpack/app.js']),
-    'service-worker': preScriptsEnv.concat(['./webpack/serviceWorker.js'])
+    'app': preScriptsEnv.concat(['./webpack/app.js'])
   },
 
   output: {
@@ -69,9 +69,7 @@ const config = {
     // must match config.webpack.output_dir
     path: path.join(__dirname, '.tmp', 'dist'),
     publicPath: '/',
-
-    // filename: isProduction ? '[name]-[chunkhash].js' : '[name].js'
-    filename: '[name].js'
+    filename: isProduction ? '[name]-[chunkhash].js' : '[name].js'
   },
 
   resolve: {
@@ -134,8 +132,7 @@ const config = {
 
   plugins: [
     new ExtractTextPlugin({
-      // filename: isProduction ? '[name]-[contenthash].css' : '[name].css',
-      filename: '[name].css',
+      filename: isProduction ? '[name]-[contenthash].css' : '[name].css',
       allChunks: true
     })
   ]
@@ -165,6 +162,27 @@ if (isProduction) {
 }
 
 config.plugins.push(
+  new OfflinePlugin({
+    excludes: [
+      '**/.*',
+      '**/*.map'
+    ],
+    externals: [
+      '/'
+    ],
+    name: 'mp-cache',
+    version: '[hash]',
+    responseStrategy: 'cache-first',
+    prefetchRequest: {
+      credentials: 'include'
+    },
+    ServiceWorker: {
+      events: true,
+      scope: '/',
+      minify: isProduction
+    },
+    AppCache: null
+  }),
   new ManifestPlugin({
     fileName: 'assets-manifest.json',
     publicPath: config.output.publicPath,
