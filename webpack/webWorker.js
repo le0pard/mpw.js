@@ -1,4 +1,4 @@
-import {MPW} from 'lib/mpw'
+import MPW from 'lib/mpw'
 
 self.addEventListener('message', (e) => {
   MPW.test().then(() => console.log('All OK')).catch((error) => console.error('GET error', error))

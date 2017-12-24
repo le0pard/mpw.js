@@ -1,7 +1,8 @@
 import crypto from 'crypto-js'
 import scrypt from './scrypt'
+import {TextEncoder as TextEncoderPolyfill} from 'text-encoding'
 
-export class MPW {
+class MPW {
   constructor(name, password, version = MPW.VERSION) {
     // The algorithm version
     this.version = version
@@ -252,29 +253,14 @@ export class MPW {
     // Preventing all future access
     this.key = Promise.reject(new Error('invalid state'))
   }
-
-  static test() {
-    // Pretty simple test here
-    return new MPW('user', 'password').
-      generate('example.com', 1, null, 'long', MPW.NS).
-      then((password) => {
-        console.assert(
-          password === 'ZedaFaxcZaso9*',
-          `Self-test failed; expected: ZedaFaxcZaso9*; got: ${password}`
-        )
-        return password === 'ZedaFaxcZaso9*'
-          ? Promise.resolve()
-          : Promise.reject(
-            new Error(
-              `Self-test failed; expected: ZedaFaxcZaso9*; got: ${password}`
-            )
-          )
-      })
-  }
 }
 
 // A TextEncoder in UTF-8 to convert strings to `Uint8Array`s
-MPW.txtencoder = new TextEncoder
+MPW.txtencoder = (
+  typeof TextEncoder !== 'undefined' ?
+  new TextEncoder :
+  new TextEncoderPolyfill
+)
 
 // The latest version of MPW supported
 MPW.VERSION = 3
@@ -356,3 +342,5 @@ MPW.passchars = {
   x: 'AEIOUaeiouBCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz0123456789!@#$%^&*()',
   ' ': ' '
 }
+
+export default MPW
