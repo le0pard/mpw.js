@@ -22,7 +22,7 @@ export default class Root extends React.Component {
 
     return (
       <Provider store={store} key="provider">
-        <ConnectedRouter history={routerHistory}>
+        <ConnectedRouter history={routerHistory} key="connected-router">
           {renderRoutes(routes)}
         </ConnectedRouter>
       </Provider>

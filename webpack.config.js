@@ -59,7 +59,8 @@ const cssLoaders = [
 const config = {
   target: 'web',
   entry: {
-    'app': preScriptsEnv.concat(['./webpack/app.js'])
+    'app': preScriptsEnv.concat(['./webpack/app.js']),
+    'web-worker': preScriptsEnv.concat(['./webpack/webWorker.js'])
   },
 
   output: {
