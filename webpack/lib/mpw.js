@@ -2,8 +2,94 @@ import crypto from 'crypto-js'
 import scrypt from './scrypt'
 import {TextEncoder as TextEncoderPolyfill} from 'text-encoding'
 
-class MPW {
-  constructor(name, password, version = MPW.VERSION) {
+// A TextEncoder in UTF-8 to convert strings to `Uint8Array`s
+const TXTENCODER = (
+  typeof TextEncoder !== 'undefined' ? new TextEncoder : new TextEncoderPolyfill
+)
+
+// The latest version of MPW supported
+export const VERSION = 3
+
+// The namespace used in calculateKey
+export const MPW_NS = 'com.lyndir.masterpassword'
+
+// The namespaces used in calculateSeed
+export const MPW_PASSWORD_NS = 'com.lyndir.masterpassword'
+export const MPW_LOGIN_NS = 'com.lyndir.masterpassword.login'
+export const MPW_ANSWER_NS = 'com.lyndir.masterpassword.answer'
+
+// The templates that passwords may be created from
+// The characters map to MPW_PASSCHARS
+export const MPW_TEMPLATES = {
+  maximum: [
+    'anoxxxxxxxxxxxxxxxxx',
+    'axxxxxxxxxxxxxxxxxno'
+  ],
+  long: [
+    'CvcvnoCvcvCvcv',
+    'CvcvCvcvnoCvcv',
+    'CvcvCvcvCvcvno',
+    'CvccnoCvcvCvcv',
+    'CvccCvcvnoCvcv',
+    'CvccCvcvCvcvno',
+    'CvcvnoCvccCvcv',
+    'CvcvCvccnoCvcv',
+    'CvcvCvccCvcvno',
+    'CvcvnoCvcvCvcc',
+    'CvcvCvcvnoCvcc',
+    'CvcvCvcvCvccno',
+    'CvccnoCvccCvcv',
+    'CvccCvccnoCvcv',
+    'CvccCvccCvcvno',
+    'CvcvnoCvccCvcc',
+    'CvcvCvccnoCvcc',
+    'CvcvCvccCvccno',
+    'CvccnoCvcvCvcc',
+    'CvccCvcvnoCvcc',
+    'CvccCvcvCvccno'
+  ],
+  medium: [
+    'CvcnoCvc',
+    'CvcCvcno'
+  ],
+  basic: [
+    'aaanaaan',
+    'aannaaan',
+    'aaannaaa'
+  ],
+  short: [
+    'Cvcn'
+  ],
+  pin: [
+    'nnnn'
+  ],
+  name: [
+    'cvccvcvcv'
+  ],
+  phrase: [
+    'cvcc cvc cvccvcv cvc',
+    'cvc cvccvcvcv cvcv',
+    'cv cvccv cvc cvcvccv'
+  ]
+}
+
+// The password character mapping
+// c in template becomes bcdfghjklmnpqrstvwxyz
+export const MPW_PASSCHARS = {
+  V: 'AEIOU',
+  C: 'BCDFGHJKLMNPQRSTVWXYZ',
+  v: 'aeiou',
+  c: 'bcdfghjklmnpqrstvwxyz',
+  A: 'AEIOUBCDFGHJKLMNPQRSTVWXYZ',
+  a: 'AEIOUaeiouBCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz',
+  n: '0123456789',
+  o: '@&%?,=[]_:-+*$#!\'^~;()/.',
+  x: 'AEIOUaeiouBCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz0123456789!@#$%^&*()',
+  ' ': ' '
+}
+
+export class MPW {
+  constructor(name, password, version = VERSION) {
     // The algorithm version
     this.version = version
 
@@ -11,7 +97,7 @@ class MPW {
     this.name = name
 
     // Check for valid algorithm versions
-    if (version >= 0 && version <= MPW.VERSION) {
+    if (version >= 0 && version <= VERSION) {
       // Calculate the master key which will be used to calculate
       // the password seed
       this.key = MPW.calculateKey(name, password, version)
@@ -23,7 +109,7 @@ class MPW {
   }
 
   // calculateKey takes ~ 1450.000ms to complete
-  static calculateKey(name, password, version = MPW.VERSION) {
+  static calculateKey(name, password, version = VERSION) {
     if (!name || !name.length) {
       return Promise.reject(new Error('Argument name not present'))
     }
@@ -37,13 +123,13 @@ class MPW {
     const nameCharLength = name.length
 
     // Convert password string to a Uint8Array w/ UTF-8
-    password = MPW.txtencoder.encode(password)
+    password = TXTENCODER.encode(password)
 
     // Convert name string to a Uint8Array w/ UTF-8
-    name = MPW.txtencoder.encode(name)
+    name = TXTENCODER.encode(name)
 
-    // Convert MPW.NS string to a Uint8Array w/ UTF-8
-    const NS = MPW.txtencoder.encode(MPW.NS)
+    // Convert MPW_NS string to a Uint8Array w/ UTF-8
+    const NS = TXTENCODER.encode(MPW_NS)
 
     // Create salt array and a DataView representing it
     let salt = new Uint8Array(
@@ -84,7 +170,7 @@ class MPW {
   }
 
   // calculateSeed takes ~ 3.000ms to complete + the time of calculateKey once
-  calculateSeed(site, counter = 1, context = null, NS = MPW.NS) {
+  calculateSeed(site, counter = 1, context = null, NS = MPW_NS) {
     if (!site) {
       return Promise.reject(new Error('Argument site not present'))
     }
@@ -98,14 +184,14 @@ class MPW {
     const siteCharLength = site.length
 
     // Convert salt string to a Uint8Array w/ UTF-8
-    site = MPW.txtencoder.encode(site)
+    site = TXTENCODER.encode(site)
 
     // Convert NS string to a Uint8Array w/ UTF-8
-    NS = MPW.txtencoder.encode(NS)
+    NS = TXTENCODER.encode(NS)
 
     if (context) {
       // Convert context string to a Uint8Array w/ UTF-8
-      context = MPW.txtencoder.encode(context)
+      context = TXTENCODER.encode(context)
     }
 
     // Create data array and a DataView representing it
@@ -185,9 +271,9 @@ class MPW {
   }
 
   // generate takes ~ 0.200ms to complete + the time of calculateSeed
-  generate(site, counter = 1, context = null, template = 'long', NS = MPW.NS) {
+  generate(site, counter = 1, context = null, template = 'long', NS = MPW_NS) {
     // Does the requested template exist?
-    if (!(template in MPW.templates)) {
+    if (!(template in MPW_TEMPLATES)) {
       return Promise.reject(new Error('Argument template invalid'))
     }
 
@@ -216,16 +302,16 @@ class MPW {
 
     return seed.then((seedRes) => {
       // Find the selected template array
-      template = MPW.templates[template]
+      template = MPW_TEMPLATES[template]
 
       // Select the specific template based on seed[0]
       template = template[seedRes[0] % template.length]
 
       // Split the template string (e.g. xxx...xxx)
       return template.split('').map((c, i) => {
-        // Use MPW.passchars to map the template string (e.g. xxx...xxx)
+        // Use MPW_PASSCHARS to map the template string (e.g. xxx...xxx)
         // to characters (e.g. c -> bcdfghjklmnpqrstvwxyz)
-        let chars = MPW.passchars[c]
+        let chars = MPW_PASSCHARS[c]
 
         // Select the character using seedRes[i + 1]
         return chars[seedRes[i + 1] % chars.length]
@@ -235,17 +321,17 @@ class MPW {
 
   // generate a password with the password namespace
   generatePassword(site, counter = 1, template = 'long') {
-    return this.generate(site, counter, null, template, MPW.PasswordNS)
+    return this.generate(site, counter, null, template, MPW_PASSWORD_NS)
   }
 
   // generate a username with the login namespace
   generateLogin(site, counter = 1, template = 'name') {
-    return this.generate(site, counter, null, template, MPW.LoginNS)
+    return this.generate(site, counter, null, template, MPW_LOGIN_NS)
   }
 
   // generate a security answer with the answer namespace
   generateAnswer(site, counter = 1, context = '', template = 'phrase') {
-    return this.generate(site, counter, context, template, MPW.AnswerNS)
+    return this.generate(site, counter, context, template, MPW_ANSWER_NS)
   }
 
   invalidate() {
@@ -254,93 +340,3 @@ class MPW {
     this.key = Promise.reject(new Error('invalid state'))
   }
 }
-
-// A TextEncoder in UTF-8 to convert strings to `Uint8Array`s
-MPW.txtencoder = (
-  typeof TextEncoder !== 'undefined' ?
-  new TextEncoder :
-  new TextEncoderPolyfill
-)
-
-// The latest version of MPW supported
-MPW.VERSION = 3
-
-// The namespace used in calculateKey
-MPW.NS = 'com.lyndir.masterpassword'
-
-// The namespaces used in calculateSeed
-MPW.PasswordNS = 'com.lyndir.masterpassword'
-MPW.LoginNS = 'com.lyndir.masterpassword.login'
-MPW.AnswerNS = 'com.lyndir.masterpassword.answer'
-
-// The templates that passwords may be created from
-// The characters map to MPW.passchars
-MPW.templates = {
-  maximum: [
-    'anoxxxxxxxxxxxxxxxxx',
-    'axxxxxxxxxxxxxxxxxno'
-  ],
-  long: [
-    'CvcvnoCvcvCvcv',
-    'CvcvCvcvnoCvcv',
-    'CvcvCvcvCvcvno',
-    'CvccnoCvcvCvcv',
-    'CvccCvcvnoCvcv',
-    'CvccCvcvCvcvno',
-    'CvcvnoCvccCvcv',
-    'CvcvCvccnoCvcv',
-    'CvcvCvccCvcvno',
-    'CvcvnoCvcvCvcc',
-    'CvcvCvcvnoCvcc',
-    'CvcvCvcvCvccno',
-    'CvccnoCvccCvcv',
-    'CvccCvccnoCvcv',
-    'CvccCvccCvcvno',
-    'CvcvnoCvccCvcc',
-    'CvcvCvccnoCvcc',
-    'CvcvCvccCvccno',
-    'CvccnoCvcvCvcc',
-    'CvccCvcvnoCvcc',
-    'CvccCvcvCvccno'
-  ],
-  medium: [
-    'CvcnoCvc',
-    'CvcCvcno'
-  ],
-  basic: [
-    'aaanaaan',
-    'aannaaan',
-    'aaannaaa'
-  ],
-  short: [
-    'Cvcn'
-  ],
-  pin: [
-    'nnnn'
-  ],
-  name: [
-    'cvccvcvcv'
-  ],
-  phrase: [
-    'cvcc cvc cvccvcv cvc',
-    'cvc cvccvcvcv cvcv',
-    'cv cvccv cvc cvcvccv'
-  ]
-}
-
-// The password character mapping
-// c in template becomes bcdfghjklmnpqrstvwxyz
-MPW.passchars = {
-  V: 'AEIOU',
-  C: 'BCDFGHJKLMNPQRSTVWXYZ',
-  v: 'aeiou',
-  c: 'bcdfghjklmnpqrstvwxyz',
-  A: 'AEIOUBCDFGHJKLMNPQRSTVWXYZ',
-  a: 'AEIOUaeiouBCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz',
-  n: '0123456789',
-  o: '@&%?,=[]_:-+*$#!\'^~;()/.',
-  x: 'AEIOUaeiouBCDFGHJKLMNPQRSTVWXYZbcdfghjklmnpqrstvwxyz0123456789!@#$%^&*()',
-  ' ': ' '
-}
-
-export default MPW

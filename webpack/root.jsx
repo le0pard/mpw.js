@@ -6,15 +6,18 @@ import {ConnectedRouter} from 'react-router-redux'
 import {renderRoutes} from 'react-router-config'
 import {routes} from './routes'
 import {initServiceWorker} from './sw'
+import {initWebWorker} from './ww'
 
 export default class Root extends React.Component {
   static propTypes = {
+    appRoot: PropTypes.object.isRequired,
     store: PropTypes.object.isRequired
   }
 
   componentDidMount() {
-    const {store} = this.props
+    const {appRoot, store} = this.props
     initServiceWorker(store)
+    initWebWorker(appRoot, store)
   }
 
   render() {

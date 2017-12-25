@@ -7,6 +7,7 @@ import rootReducer from './rootReducer'
 import createHistory from 'history/createHashHistory'
 import {routerMiddleware} from 'react-router-redux'
 import rootSaga from 'sagas/rootSaga'
+import {webWorkerMiddleware} from './middlewares'
 
 export const routerHistory = createHistory()
 
@@ -14,6 +15,7 @@ export const initializeStore = (preloadedState = null) => {
   const sagaMiddleware = createSagaMiddleware()
 
   let middlewares = [
+    webWorkerMiddleware,
     routerMiddleware(routerHistory),
     sagaMiddleware
   ]
