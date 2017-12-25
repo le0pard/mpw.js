@@ -14,8 +14,9 @@ export default class Root extends React.Component {
     store: PropTypes.object.isRequired
   }
 
-  componentDidMount() {
-    const {appRoot, store} = this.props
+  constructor(props) {
+    super(props)
+    const {appRoot, store} = props
     initServiceWorker(store)
     initWebWorker(appRoot, store)
   }
