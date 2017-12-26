@@ -1,6 +1,6 @@
 import React from 'react'
-import GenerateKeyForm from './generateKeyForm'
-import GeneratePasswordForm from './generatePassForm'
+import GenerateKeyForm from 'containers/generateKeyForm'
+import GeneratePasswordForm from 'containers/generatePassForm'
 
 export default class DashboardPage extends React.Component {
   render() {

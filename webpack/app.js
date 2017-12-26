@@ -3,10 +3,15 @@ import React from 'react'
 import ReactDom from 'react-dom'
 import Root from './root'
 import {initializeStore} from './redux/store'
+import {initServiceWorker} from './sw'
+import {initWebWorker} from './ww'
 
 const renderApp = (Component, appRoot, store) => {
+  initWebWorker(appRoot, store)
+  initServiceWorker(store)
+
   ReactDom.render(
-    <Component appRoot={appRoot} store={store} />,
+    <Component store={store} />,
     appRoot, () => {
       // need to make this for feature tests - application ready for testing
       window.__isAppReady = true

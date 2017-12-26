@@ -94,3 +94,18 @@ describe('User "Max Power" with super secret password', () => {
     })
   })
 })
+
+describe('User "Max Power" with super secret password and version v0', () => {
+  let mpw = null
+
+  beforeAll(() => {
+    mpw = new MPW('Max Power', 'supersecretpassword12874!', 0)
+  })
+
+  describe('#generatePassword', () => {
+    test('check long password', () => {
+      return mpw.generatePassword('some.important-site.com')
+        .then(password => expect(password).toEqual('Tece7.GokwJufp'))
+    })
+  })
+})

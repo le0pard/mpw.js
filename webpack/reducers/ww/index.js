@@ -35,7 +35,7 @@ const isHaveGeneratedKey = createReducer({
 }, false)
 
 const passwordResponse = createReducer({
-  [generatePasswordSuccess]: (state, payload) => payload,
+  [generatePasswordSuccess]: (state, payload) => payload
 }, null)
 
 export const reducer = combineReducers({
