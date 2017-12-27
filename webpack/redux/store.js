@@ -24,6 +24,8 @@ export const initializeStore = (preloadedState = null) => {
     middlewares.push(createLogger({
       ...loggers,
       level: 'info',
+      duration: true,
+      timestamp: true,
       collapsed: true,
       diff: true
     }))
