@@ -10,7 +10,7 @@ export default class GenerateKeyForm extends React.Component {
     submitting: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
     isHaveGeneratedKey: PropTypes.bool.isRequired,
-    passwordResponse: PropTypes.string,
+    password: PropTypes.string,
     onSubmitForm: PropTypes.func.isRequired
   }
 
@@ -25,7 +25,7 @@ export default class GenerateKeyForm extends React.Component {
       pristine,
       submitting,
       reset,
-      passwordResponse
+      password
     } = this.props
 
     if (!isHaveGeneratedKey) {
@@ -69,8 +69,8 @@ export default class GenerateKeyForm extends React.Component {
             Clear Values
           </button>
         </div>
-        {passwordResponse && <div>
-          <h1>Your password: {passwordResponse}</h1>
+        {password && <div>
+          <h1>Your password: {password}</h1>
         </div>}
       </form>
     )

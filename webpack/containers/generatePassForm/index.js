@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 
 const mapStateToProps = (state) => ({
   isHaveGeneratedKey: state.ww.isHaveGeneratedKey,
-  passwordResponse: state.ww.passwordResponse
+  password: state.ww.password
 })
 
 const mapDispatchToProps = (dispatch) => ({

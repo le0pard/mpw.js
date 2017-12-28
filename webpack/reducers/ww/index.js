@@ -34,12 +34,12 @@ const isHaveGeneratedKey = createReducer({
   [generateKeyError]: () => false
 }, false)
 
-const passwordResponse = createReducer({
+const password = createReducer({
   [generatePasswordSuccess]: (state, payload) => payload
 }, null)
 
 export const reducer = combineReducers({
   isGeneratingKey,
   isHaveGeneratedKey,
-  passwordResponse
+  password
 })

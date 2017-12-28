@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {Field} from 'redux-form'
 import GenerateKeyField from './field'
+import SelectDropdown from 'components/selectDropdown'
 
 export default class GenerateKeyForm extends React.Component {
   static propTypes = {
@@ -44,12 +45,11 @@ export default class GenerateKeyForm extends React.Component {
           component={GenerateKeyField}
           label="Password"
         />
-        <Field name="version" component="select">
-          <option value="3">V3</option>
-          <option value="2">V2</option>
-          <option value="1">V1</option>
-          <option value="0">V0</option>
-        </Field>
+        <Field
+          name="version"
+          component={SelectDropdown}
+          options={[{label: 'V3', value: 3}]}
+        />
         <div>
           <button type="submit" disabled={submitting}>
             Generate
