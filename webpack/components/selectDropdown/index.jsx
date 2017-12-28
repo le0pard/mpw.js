@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 import classnames from 'classnames'
-import _omit from 'lodash/omit'
 
 const isSmallTouchDevice = 'ontouchstart' in window &&
   window.matchMedia &&
@@ -44,7 +43,6 @@ export default class SelectDropdown extends React.Component {
       className,
       ...restProps
     } = this.props
-    const selectOptions = _omit(restProps, ['dispatch'])
 
     return (
       <div className={classnames('select-dropdown', className)}>
