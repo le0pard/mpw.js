@@ -22,6 +22,8 @@ export const generatePasswordError = createAction(
   actionTypes.WW_GENERATE_PASSWORD_ERROR
 )
 
+export const resetPassword = createAction('Reset password')
+
 const isGeneratingKey = createReducer({
   [generateKeyRequest]: () => true,
   [generateKeySuccess]: () => false,
@@ -35,7 +37,8 @@ const isHaveGeneratedKey = createReducer({
 }, false)
 
 const password = createReducer({
-  [generatePasswordSuccess]: (state, payload) => payload
+  [generatePasswordSuccess]: (state, payload) => payload,
+  [resetPassword]: () => null
 }, null)
 
 export const reducer = combineReducers({

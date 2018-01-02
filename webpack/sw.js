@@ -7,18 +7,12 @@ import {
 
 export const initServiceWorker = (store) => {
   runtime.install({
-    onUpdating: () => {
-      store.dispatch(updating())
-    },
+    onUpdating: () => store.dispatch(updating()),
     onUpdateReady: () => {
       // Tells to new SW to take control immediately
       runtime.applyUpdate()
     },
-    onUpdated: () => {
-      store.dispatch(updated())
-    },
-    onUpdateFailed: () => {
-      store.dispatch(failed())
-    }
+    onUpdated: () => store.dispatch(updated()),
+    onUpdateFailed: () => store.dispatch(failed())
   })
 }

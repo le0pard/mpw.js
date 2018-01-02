@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {Field} from 'redux-form'
-import GenerateKeyField from './field'
-import SelectDropdown from 'components/selectDropdown'
+import FormField from 'components/form/field'
+import FormDropdown from 'components/form/dropdown'
+import Spinner from 'components/spinner'
 
 export default class GenerateKeyForm extends React.Component {
   static propTypes = {
@@ -11,6 +12,7 @@ export default class GenerateKeyForm extends React.Component {
     submitting: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
     isHaveGeneratedKey: PropTypes.bool.isRequired,
+    isGeneratingKey: PropTypes.bool.isRequired,
     onSubmitForm: PropTypes.func.isRequired
   }
 
@@ -21,6 +23,7 @@ export default class GenerateKeyForm extends React.Component {
   render() {
     const {
       isHaveGeneratedKey,
+      isGeneratingKey,
       handleSubmit,
       pristine,
       submitting,
@@ -36,19 +39,26 @@ export default class GenerateKeyForm extends React.Component {
         <Field
           name="name"
           type="text"
-          component={GenerateKeyField}
+          component={FormField}
+          autoFocus={true}
           label="Name"
         />
         <Field
           name="password"
           type="password"
-          component={GenerateKeyField}
+          component={FormField}
           label="Password"
         />
         <Field
           name="version"
-          component={SelectDropdown}
-          options={[{label: 'V3', value: 3}]}
+          component={FormDropdown}
+          label="Version"
+          options={[
+            {label: 'V3', value: 3},
+            {label: 'V2', value: 2},
+            {label: 'V1', value: 1},
+            {label: 'V0', value: 0}
+          ]}
         />
         <div>
           <button type="submit" disabled={submitting}>
@@ -60,6 +70,7 @@ export default class GenerateKeyForm extends React.Component {
             Clear Values
           </button>
         </div>
+        {isGeneratingKey && <Spinner />}
       </form>
     )
   }

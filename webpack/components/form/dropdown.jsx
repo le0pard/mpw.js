@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class GenerateKeyField extends React.Component {
+export default class FormDropdown extends React.Component {
   static propTypes = {
     input: PropTypes.object.isRequired,
-    type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    options: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.any.isRequired
+    }).isRequired),
     meta: PropTypes.shape({
       touched: PropTypes.bool.isRequired,
       error: PropTypes.string
@@ -16,7 +19,7 @@ export default class GenerateKeyField extends React.Component {
     const {
       label,
       input,
-      type,
+      options,
       meta: {touched, error}
     } = this.props
 
@@ -24,7 +27,15 @@ export default class GenerateKeyField extends React.Component {
       <div>
         <label>{label}</label>
         <div>
-          <input {...input} placeholder={label} type={type} />
+          <select {...input}>
+            {options.map((option, index) => {
+              return (
+                <option key={index} value={option.value}>
+                  {option.label}
+                </option>
+              )
+            })}
+          </select>
           {touched && error && <span>{error}</span>}
         </div>
       </div>

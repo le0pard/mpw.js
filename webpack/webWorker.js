@@ -26,24 +26,25 @@ const generateMpwKey = (successType, errorType, payload) => {
 }
 
 const generateMpwPassword = (successType, errorType, payload) => {
-  const {site} = payload
+  const {site, counter, template} = payload
   if (!mpwObject) {
     return self.postMessage({
       type: errorType,
       payload: 'You need generate key'
     })
   }
-  return mpwObject.generatePassword(site).then((password) => {
-    return self.postMessage({
-      type: successType,
-      payload: password
+  return mpwObject.generatePassword(site, counter, template)
+    .then((password) => {
+      return self.postMessage({
+        type: successType,
+        payload: password
+      })
+    }).catch((err) => {
+      return self.postMessage({
+        type: errorType,
+        payload: err
+      })
     })
-  }).catch((err) => {
-    return self.postMessage({
-      type: errorType,
-      payload: err
-    })
-  })
 }
 
 self.addEventListener('message', (e) => {
