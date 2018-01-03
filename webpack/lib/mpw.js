@@ -311,7 +311,7 @@ export class MPW {
       return template.split('').map((c, i) => {
         // Use MPW_PASSCHARS to map the template string (e.g. xxx...xxx)
         // to characters (e.g. c -> bcdfghjklmnpqrstvwxyz)
-        let chars = MPW_PASSCHARS[c]
+        const chars = MPW_PASSCHARS[c]
 
         // Select the character using seedRes[i + 1]
         return chars[seedRes[i + 1] % chars.length]

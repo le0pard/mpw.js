@@ -84,13 +84,18 @@ describe('User "Max Power" with super secret password', () => {
 
   describe('#generateAnswer', () => {
     test('check answer', () => {
-      return mpw.generateAnswer('some.important-site.com', 1, 'some answer')
-        .then(login => expect(login).toEqual('mokl bav qemviba mal'))
+      return mpw.generateAnswer('some.important-site.com', 1, 'some question')
+        .then(login => expect(login).toEqual('bi porxo cum lucojpe'))
     })
 
     test('check answer with 4 counter', () => {
-      return mpw.generateAnswer('some.important-site.com', 4, 'some answer')
-        .then(login => expect(login).toEqual('si yujfa vif qafihqi'))
+      return mpw.generateAnswer('some.important-site.com', 4, 'some question')
+        .then(login => expect(login).toEqual('logg zow kuffaga joq'))
+    })
+
+    test('check another question', () => {
+      return mpw.generateAnswer('some.important-site.com', 1, 'Your faivorite food?')
+        .then(login => expect(login).toEqual('guvj poz tufcafa ruq'))
     })
   })
 })
