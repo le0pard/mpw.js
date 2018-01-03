@@ -100,7 +100,7 @@ export class MPW {
     if (version >= 0 && version <= VERSION) {
       // Calculate the master key which will be used to calculate
       // the password seed
-      this.key = MPW.calculateKey(name, password, version)
+      this.key = this.calculateKey(name, password, version)
     } else {
       this.key = Promise.reject(
         new Error(`Algorithm version ${version} not implemented`)
@@ -109,7 +109,7 @@ export class MPW {
   }
 
   // calculateKey takes ~ 1450.000ms to complete
-  static calculateKey(name, password, version = VERSION) {
+  calculateKey(name, password, version = VERSION) {
     if (!name || !name.length) {
       return Promise.reject(new Error('Argument name not present'))
     }

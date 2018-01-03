@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import AppUpdate from 'containers/appUpdate'
 import {renderRoutes} from 'react-router-config'
 
 export default class AppLayout extends React.Component {
@@ -17,6 +18,7 @@ export default class AppLayout extends React.Component {
 
     return (
       <div>
+        <AppUpdate />
         {renderRoutes(route.routes)}
       </div>
     )

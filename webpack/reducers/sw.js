@@ -18,6 +18,7 @@ const isFailed = createReducer({
 }, false)
 
 const isNewVersionAvailable = createReducer({
+  [updating]: () => false,
   [updated]: () => true,
   [failed]: () => false
 }, false)

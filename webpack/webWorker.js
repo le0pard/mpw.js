@@ -50,6 +50,9 @@ const generateMpwPassword = (successType, errorType, payload) => {
 const resetMpwKey = (successType) => {
   if (mpwObject) {
     mpwObject.invalidate()
+    mpwObject.key.catch(() => {
+      // do nothing
+    })
   }
   mpwObject = null
   return self.postMessage({
