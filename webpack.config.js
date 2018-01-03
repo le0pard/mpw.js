@@ -40,6 +40,8 @@ const cssLoaders = [
             addDependencyTo: webpack
           }),
           require('postcss-url')(),
+          require('lost'),
+          require('rucksack-css')(),
           require('postcss-cssnext')({
             browsers: [
               'last 2 version'
