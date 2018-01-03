@@ -6,6 +6,7 @@ export default class FormField extends React.Component {
     input: PropTypes.object.isRequired,
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
+    inputProps: PropTypes.object,
     autoFocus: PropTypes.bool,
     meta: PropTypes.shape({
       touched: PropTypes.bool.isRequired,
@@ -14,7 +15,7 @@ export default class FormField extends React.Component {
   }
 
   static defaultProps = {
-    autoFocus: false
+    inputProps: {}
   }
 
   render() {
@@ -22,7 +23,7 @@ export default class FormField extends React.Component {
       label,
       input,
       type,
-      autoFocus,
+      inputProps,
       meta: {touched, error}
     } = this.props
 
@@ -32,9 +33,9 @@ export default class FormField extends React.Component {
         <div>
           <input
             {...input}
+            {...inputProps}
             placeholder={label}
-            type={type}
-            autoFocus={autoFocus} />
+            type={type} />
           {touched && error && <span>{error}</span>}
         </div>
       </div>

@@ -8,16 +8,16 @@ import CopyButton from 'components/copyButton'
 
 const INPUT_CHANGE_TIMEOUT = 150
 
-export default class GenerateKeyForm extends React.Component {
+export default class GenerateKey extends React.Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
-    isHaveGeneratedKey: PropTypes.bool.isRequired,
     password: PropTypes.string,
     onSubmitForm: PropTypes.func.isRequired,
-    formResetPassword: PropTypes.func.isRequired
+    formResetPassword: PropTypes.func.isRequired,
+    resetMpwKey: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -35,7 +35,7 @@ export default class GenerateKeyForm extends React.Component {
   }
 
   formChangeBind() {
-    return setTimeout(this.handleFormSubmitFunc(), 0)
+    setTimeout(this.handleFormSubmitFunc(), 0)
   }
 
   handleResetPassword() {
@@ -61,30 +61,29 @@ export default class GenerateKeyForm extends React.Component {
 
   render() {
     const {
-      isHaveGeneratedKey,
       pristine,
       submitting
     } = this.props
-
-    if (!isHaveGeneratedKey) {
-      return null
-    }
 
     return (
       <form
         onChange={_debounce(this.formChangeBind, INPUT_CHANGE_TIMEOUT)}
         onSubmit={this.handleFormSubmitFunc()}>
+        <div>
+          <a href="#" onClick={this.props.resetMpwKey}>Reset key</a>
+        </div>
         <Field
           name="site"
           type="text"
           component={FormField}
-          autoFocus={true}
+          inputProps={{autoFocus: true}}
           label="Site"
         />
         <Field
           name="counter"
           type="number"
           component={FormField}
+          inputProps={{step: 1, min: 1, max: 1000}}
           label="Counter"
         />
         <Field

@@ -1,4 +1,4 @@
-import GenerateKeyForm from 'components/generateKeyForm'
+import GenerateKey from 'components/generateKey'
 import {actionTypes} from 'reducers/ww/constants'
 import {reduxForm} from 'redux-form'
 import {connect} from 'react-redux'
@@ -16,8 +16,7 @@ const validate = (values) => {
 }
 
 const mapStateToProps = (state) => ({
-  isGeneratingKey: state.ww.isGeneratingKey,
-  isHaveGeneratedKey: state.ww.isHaveGeneratedKey
+  isGeneratingKey: state.ww.isGeneratingKey
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -40,4 +39,4 @@ export default connect(
   initialValues: {
     version: VERSION
   }
-})(GenerateKeyForm))
+})(GenerateKey))

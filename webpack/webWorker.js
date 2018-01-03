@@ -47,6 +47,16 @@ const generateMpwPassword = (successType, errorType, payload) => {
     })
 }
 
+const resetMpwKey = (successType) => {
+  if (mpwObject) {
+    mpwObject.invalidate()
+  }
+  mpwObject = null
+  return self.postMessage({
+    type: successType
+  })
+}
+
 self.addEventListener('message', (e) => {
   const {
     requestType,
@@ -61,6 +71,9 @@ self.addEventListener('message', (e) => {
     }
     case actionTypes.WW_GENERATE_PASSWORD_REQUEST: {
       return generateMpwPassword(successType, errorType, payload)
+    }
+    case actionTypes.WW_RESET_KEY_REQUEST: {
+      return resetMpwKey(successType)
     }
     default: {
       return self.postMessage({

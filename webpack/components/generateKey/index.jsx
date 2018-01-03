@@ -5,13 +5,12 @@ import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import Spinner from 'components/spinner'
 
-export default class GenerateKeyForm extends React.Component {
+export default class GenerateKey extends React.Component {
   static propTypes = {
     handleSubmit: PropTypes.func.isRequired,
     pristine: PropTypes.bool.isRequired,
     submitting: PropTypes.bool.isRequired,
     reset: PropTypes.func.isRequired,
-    isHaveGeneratedKey: PropTypes.bool.isRequired,
     isGeneratingKey: PropTypes.bool.isRequired,
     onSubmitForm: PropTypes.func.isRequired
   }
@@ -22,7 +21,6 @@ export default class GenerateKeyForm extends React.Component {
 
   render() {
     const {
-      isHaveGeneratedKey,
       isGeneratingKey,
       handleSubmit,
       pristine,
@@ -30,17 +28,13 @@ export default class GenerateKeyForm extends React.Component {
       reset
     } = this.props
 
-    if (isHaveGeneratedKey) {
-      return null
-    }
-
     return (
       <form onSubmit={handleSubmit(this.handleGenerateKey.bind(this))}>
         <Field
           name="name"
           type="text"
           component={FormField}
-          autoFocus={true}
+          inputProps={{autoFocus: true}}
           label="Name"
         />
         <Field
@@ -62,7 +56,7 @@ export default class GenerateKeyForm extends React.Component {
         />
         <div>
           <button type="submit" disabled={submitting}>
-            Generate
+            Generate key
           </button>
           <button type="button"
             disabled={pristine || submitting}

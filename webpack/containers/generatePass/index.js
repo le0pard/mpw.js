@@ -1,4 +1,4 @@
-import GeneratePassForm from 'components/generatePassForm'
+import GeneratePass from 'components/generatePass'
 import {actionTypes} from 'reducers/ww/constants'
 import {resetPassword} from 'reducers/ww'
 import {reduxForm} from 'redux-form'
@@ -16,7 +16,6 @@ const validate = (values) => {
 }
 
 const mapStateToProps = (state) => ({
-  isHaveGeneratedKey: state.ww.isHaveGeneratedKey,
   password: state.ww.password
 })
 
@@ -29,7 +28,14 @@ const mapDispatchToProps = (dispatch) => ({
     ],
     payload: values
   }),
-  formResetPassword: () => dispatch(resetPassword())
+  formResetPassword: () => dispatch(resetPassword()),
+  resetMpwKey: () => dispatch({
+    wwTypes: [
+      actionTypes.WW_RESET_KEY_REQUEST,
+      actionTypes.WW_RESET_KEY_SUCCESS,
+      actionTypes.WW_RESET_KEY_ERROR
+    ]
+  })
 })
 
 export default connect(
@@ -42,4 +48,4 @@ export default connect(
     counter: 1,
     template: 'long'
   }
-})(GeneratePassForm))
+})(GeneratePass))

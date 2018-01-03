@@ -13,7 +13,9 @@ export default class CopyButton extends React.Component {
   }
 
   componentDidMount() {
-    this.clipboard = new Clipboard(this.copyButton)
+    if (this.copyButton) {
+      this.clipboard = new Clipboard(this.copyButton)
+    }
   }
 
   componentWillUnmount() {
@@ -32,7 +34,9 @@ export default class CopyButton extends React.Component {
     return (
       <button
         ref={(r) => this.buttonRef(r)}
-        data-clipboard-text={text}>{label}</button>
+        data-clipboard-text={text}>
+        {label}
+      </button>
     )
   }
 }
