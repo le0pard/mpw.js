@@ -21,14 +21,18 @@ export default class AppLayout extends React.Component {
     return (
       <div>
         <GithubCorner />
-        <NavLink to="/">
-          Dashboard
-        </NavLink>
-        <NavLink to="/algorithm">
-          How It Works
-        </NavLink>
-        <AppUpdate />
-        {renderRoutes(route.routes)}
+        <nav role="navigation">
+          <NavLink to="/">
+            Dashboard
+          </NavLink>
+          <NavLink to="/algorithm">
+            How It Works
+          </NavLink>
+        </nav>
+        <main role="main">
+          <AppUpdate />
+          {renderRoutes(route.routes)}
+        </main>
       </div>
     )
   }

@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _camelCase from 'lodash/camelCase'
 
 export default class FormField extends React.Component {
   static propTypes = {
@@ -27,13 +28,18 @@ export default class FormField extends React.Component {
       meta: {touched, error}
     } = this.props
 
+    const inputID = _camelCase(`${input.name}-id`)
+
     return (
       <div>
-        <label>{label}</label>
+        <label htmlFor={inputID}>
+          {label}
+        </label>
         <div>
           <input
             {...input}
             {...inputProps}
+            id={inputID}
             placeholder={label}
             type={type} />
           {touched && error && <span>{error}</span>}

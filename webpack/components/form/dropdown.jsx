@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _camelCase from 'lodash/camelCase'
 
 export default class FormDropdown extends React.Component {
   static propTypes = {
@@ -23,11 +24,15 @@ export default class FormDropdown extends React.Component {
       meta: {touched, error}
     } = this.props
 
+    const dropdownID = _camelCase(`${input.name}-id`)
+
     return (
       <div>
-        <label>{label}</label>
+        <label htmlFor={dropdownID}>
+          {label}
+        </label>
         <div>
-          <select {...input}>
+          <select {...input} id={dropdownID}>
             {options.map((option, index) => {
               return (
                 <option key={index} value={option.value}>
