@@ -24,12 +24,14 @@ page '/*.txt', layout: false
 require "lib/mpw_helpers"
 helpers MpwHelpers
 
+assets_dir = ".tmp/dist"
+
 activate :external_pipeline,
   name: :webpack,
   command: build? ?
-    'NODE_ENV=production ./node_modules/.bin/webpack --bail' :
+    "rm #{assets_dir}/* && NODE_ENV=production ./node_modules/.bin/webpack --bail" :
     './node_modules/.bin/webpack --watch -d --color',
-  source: ".tmp/dist",
+  source: assets_dir,
   latency: 1
 
 # With alternative layout

@@ -39,17 +39,11 @@ export default class CopyButton extends React.Component {
     if (this.copyButton) {
       this.clipboard = new Clipboard(this.copyButton)
       this.clipboard.on('success', () => {
-        this.setState(() => ({
-          copiedSuccess: true,
-          copiedError: false
-        }))
+        this.setState(() => ({copiedSuccess: true}))
         this.resetState()
       })
       this.clipboard.on('error', () => {
-        this.setState(() => ({
-          copiedSuccess: false,
-          copiedError: true
-        }))
+        this.setState(() => ({copiedError: true}))
         this.resetState()
       })
     }
