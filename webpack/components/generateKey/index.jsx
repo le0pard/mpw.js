@@ -29,43 +29,45 @@ export default class GenerateKey extends React.Component {
     } = this.props
 
     return (
-      <form onSubmit={handleSubmit(this.handleGenerateKey.bind(this))}>
-        <Field
-          name="name"
-          type="text"
-          component={FormField}
-          inputProps={{autoFocus: true, autoComplete: 'on'}}
-          label="Name"
-        />
-        <Field
-          name="password"
-          type="password"
-          component={FormField}
-          label="Password"
-        />
-        <Field
-          name="version"
-          component={FormDropdown}
-          label="Version"
-          options={[
-            {label: 'V3', value: 3},
-            {label: 'V2', value: 2},
-            {label: 'V1', value: 1},
-            {label: 'V0', value: 0}
-          ]}
-        />
-        <div>
-          <button type="submit" disabled={submitting}>
-            Generate key
-          </button>
-          <button type="button"
-            disabled={pristine || submitting}
-            onClick={reset}>
-            Clear Values
-          </button>
-        </div>
+      <div>
+        <form onSubmit={handleSubmit(this.handleGenerateKey.bind(this))}>
+          <Field
+            name="name"
+            type="text"
+            component={FormField}
+            inputProps={{autoFocus: true, autoComplete: 'on'}}
+            label="Name"
+          />
+          <Field
+            name="password"
+            type="password"
+            component={FormField}
+            label="Password"
+          />
+          <Field
+            name="version"
+            component={FormDropdown}
+            label="Version"
+            options={[
+              {label: 'V3', value: 3},
+              {label: 'V2', value: 2},
+              {label: 'V1', value: 1},
+              {label: 'V0', value: 0}
+            ]}
+          />
+          <div>
+            <button type="submit" disabled={submitting}>
+              Generate key
+            </button>
+            <button type="button"
+              disabled={pristine || submitting}
+              onClick={reset}>
+              Clear Values
+            </button>
+          </div>
+        </form>
         {isGeneratingKey && <Spinner />}
-      </form>
+      </div>
     )
   }
 }
