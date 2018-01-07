@@ -7,6 +7,5 @@ var gulp = require('gulp')
 
 require('./gulp/eslint')
 require('./gulp/jest')
-require('./gulp/stylelint')
 
-gulp.task('test', ['eslint', 'stylelint', 'jest'])
+gulp.task('test', ['eslint', 'jest'])

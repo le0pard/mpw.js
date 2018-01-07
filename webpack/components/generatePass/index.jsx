@@ -71,6 +71,11 @@ export default class GenerateKey extends React.Component {
     }
   }
 
+  resetMpwKey(e) {
+    e.preventDefault()
+    this.props.resetMpwKey()
+  }
+
   renderPassword() {
     const {password, hidePassword} = this.props
 
@@ -111,7 +116,7 @@ export default class GenerateKey extends React.Component {
         onChange={_debounce(this.formChangeBind, INPUT_CHANGE_TIMEOUT)}
         onSubmit={this.handleFormSubmitFunc()}>
         <div>
-          <a href="#" onClick={this.props.resetMpwKey}>Reset key</a>
+          <a href="#" onClick={this.resetMpwKey.bind(this)}>Reset key</a>
         </div>
         <Field
           name="site"
