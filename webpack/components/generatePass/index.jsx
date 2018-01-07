@@ -1,12 +1,24 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import _times from 'lodash/times'
 import _debounce from 'lodash/debounce'
 import {Field} from 'redux-form'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import CopyButton from 'components/copyButton'
+import LocalStorage from 'lib/localStorage'
 
 const INPUT_CHANGE_TIMEOUT = 150
+export const INPUT_TEMPLATES = [
+  {label: 'PIN', value: 'pin'},
+  {label: 'Short', value: 'short'},
+  {label: 'Basic', value: 'basic'},
+  {label: 'Medium', value: 'medium'},
+  {label: 'Long', value: 'long'},
+  {label: 'Maximum', value: 'maximum'},
+  {label: 'Name', value: 'name'},
+  {label: 'Phrase', value: 'phrase'}
+]
 
 export default class GenerateKey extends React.Component {
   static propTypes = {
@@ -16,8 +28,10 @@ export default class GenerateKey extends React.Component {
     reset: PropTypes.func.isRequired,
     password: PropTypes.string,
     onSubmitForm: PropTypes.func.isRequired,
+    hidePassword: PropTypes.bool.isRequired,
     formResetPassword: PropTypes.func.isRequired,
-    resetMpwKey: PropTypes.func.isRequired
+    resetMpwKey: PropTypes.func.isRequired,
+    settingsTogglePassword: PropTypes.func.isRequired
   }
 
   constructor(props) {
@@ -39,13 +53,26 @@ export default class GenerateKey extends React.Component {
   }
 
   handleResetPassword() {
-    const {reset} = this.props
-    this.props.formResetPassword()
+    const {reset, formResetPassword} = this.props
+    formResetPassword()
     reset()
   }
 
+  togglePasswordVisibility(e) {
+    this.props.settingsTogglePassword()
+    LocalStorage.setItem('hidePassword', e.target.checked)
+  }
+
+  displayPassword(password, hidePassword) {
+    if (hidePassword) {
+      return _times(password.length, () => '*').join('')
+    } else {
+      return password
+    }
+  }
+
   renderPassword() {
-    const {password} = this.props
+    const {password, hidePassword} = this.props
 
     if (!password) {
       return null
@@ -53,7 +80,21 @@ export default class GenerateKey extends React.Component {
 
     return (
       <div>
-        <h1>Your password: {password}</h1>
+        <h1>Your password:</h1>
+        <input
+          type="text"
+          onFocus={(e) => e.target.select()}
+          readOnly={true}
+          value={this.displayPassword(password, hidePassword)} />
+        <input
+          id="passwordVisibilityId"
+          type="checkbox"
+          name="passwordVisibility"
+          defaultChecked={hidePassword}
+          onChange={this.togglePasswordVisibility.bind(this)} />
+        <label htmlFor="passwordVisibilityId">
+          Hide generated password
+        </label>
         <CopyButton text={password} />
       </div>
     )
@@ -90,16 +131,7 @@ export default class GenerateKey extends React.Component {
           name="template"
           component={FormDropdown}
           label="Template"
-          options={[
-            {label: 'PIN', value: 'pin'},
-            {label: 'Short', value: 'short'},
-            {label: 'Basic', value: 'basic'},
-            {label: 'Medium', value: 'medium'},
-            {label: 'Long', value: 'long'},
-            {label: 'Maximum', value: 'maximum'},
-            {label: 'Name', value: 'name'},
-            {label: 'Phrase', value: 'phrase'}
-          ]}
+          options={INPUT_TEMPLATES}
         />
         <div>
           <button type="submit" disabled={submitting}>

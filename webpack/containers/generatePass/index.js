@@ -1,22 +1,35 @@
-import GeneratePass from 'components/generatePass'
+import GeneratePass, {INPUT_TEMPLATES} from 'components/generatePass'
 import {actionTypes} from 'reducers/ww/constants'
 import {resetPassword} from 'reducers/ww'
+import {settingsTogglePassword} from 'reducers/settings'
 import {reduxForm} from 'redux-form'
 import {connect} from 'react-redux'
+
+const MPW_TEMPLATES = INPUT_TEMPLATES.map((t) => t.value)
 
 const validate = (values) => {
   const errors = {}
   if (!values.site) {
     errors.site = 'Required'
   }
+  if (!values.counter) {
+    errors.counter = 'Required'
+  }
   if (parseInt(values.counter, 10) < 1) {
     errors.counter = 'Greater than zero'
+  }
+  if (!values.template) {
+    errors.template = 'Required'
+  }
+  if (MPW_TEMPLATES.indexOf(values.template) === -1) {
+    errors.template = 'Invalid template'
   }
   return errors
 }
 
 const mapStateToProps = (state) => ({
-  password: state.ww.password
+  password: state.ww.password,
+  hidePassword: state.settings.hidePassword
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -35,7 +48,8 @@ const mapDispatchToProps = (dispatch) => ({
       actionTypes.WW_RESET_KEY_SUCCESS,
       actionTypes.WW_RESET_KEY_ERROR
     ]
-  })
+  }),
+  settingsTogglePassword: () => dispatch(settingsTogglePassword())
 })
 
 export default connect(
