@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import classnames from 'classnames'
 import _camelCase from 'lodash/camelCase'
+
+import './dropdown.sass'
 
 export default class FormDropdown extends React.Component {
   static propTypes = {
@@ -25,13 +28,17 @@ export default class FormDropdown extends React.Component {
     } = this.props
 
     const dropdownID = _camelCase(`${input.name}-id`)
+    const isError = touched && error
 
     return (
-      <div>
-        <label htmlFor={dropdownID}>
-          {label}
-        </label>
-        <div>
+      <div
+        className={classnames('form-dropdown', {
+          'form-dropdown--error': isError
+        })}>
+        <div className="form-dropdown__wrapper">
+          <label className="form-dropdown__label" htmlFor={dropdownID}>
+            {label}
+          </label>
           <select {...input} id={dropdownID}>
             {options.map((option, index) => {
               return (
@@ -41,8 +48,8 @@ export default class FormDropdown extends React.Component {
               )
             })}
           </select>
-          {touched && error && <span>{error}</span>}
         </div>
+        {isError && <div className="form-dropdown__error">{error}</div>}
       </div>
     )
   }

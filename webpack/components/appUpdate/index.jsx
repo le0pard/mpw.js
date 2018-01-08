@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import './app-update.sass'
+
 export default class AppUpdate extends React.Component {
   static propTypes = {
     isNewVersionAvailable: PropTypes.bool.isRequired
@@ -18,11 +20,16 @@ export default class AppUpdate extends React.Component {
     }
 
     return (
-      <div>
-        <h3>
-          New version available
-        </h3>
-        <a href="#" onClick={this.reloadPage.bind(this)}>Reload</a>
+      <div className="app-update">
+        <h4 className="app-update__title">
+          New version of application is available.
+        </h4>
+        <a
+          className="app-update__link"
+          href="#"
+          onClick={this.reloadPage.bind(this)}>
+          Update application
+        </a>
       </div>
     )
   }
