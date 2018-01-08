@@ -25,12 +25,13 @@ export default class AppUpdate extends React.Component {
         <h4 className="app-update__title">
           New version of application is available.
         </h4>
-        <a
-          className="app-update__link"
-          href="#"
-          onClick={this.reloadPage.bind(this)}>
-          Update application
-        </a>
+        <div className="app-update__link-wrapper">
+          <a
+            href="#"
+            onClick={this.reloadPage.bind(this)}>
+            Update application
+          </a>
+        </div>
       </div>
     )
   }

@@ -143,7 +143,7 @@ export default class GenerateKey extends React.Component {
           <button type="button"
             disabled={pristine || submitting}
             onClick={this.handleResetPassword.bind(this)}>
-            Clear Values
+            Clear Form
           </button>
         </div>
         {this.renderPassword()}

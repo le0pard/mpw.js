@@ -57,12 +57,12 @@ export default class GenerateKey extends React.Component {
           />
           <div>
             <button type="submit" disabled={submitting}>
-              Generate key
+              Generate Master Key
             </button>
             <button type="button"
               disabled={pristine || submitting}
               onClick={reset}>
-              Clear Values
+              Clear Form
             </button>
           </div>
         </form>
