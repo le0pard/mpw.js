@@ -4,6 +4,7 @@ import {resetPassword} from 'reducers/ww'
 import {settingsTogglePassword} from 'reducers/settings'
 import {reduxForm} from 'redux-form'
 import {connect} from 'react-redux'
+import LocalStorage from 'lib/localStorage'
 
 const MPW_TEMPLATES = INPUT_TEMPLATES.map((t) => t.value)
 
@@ -49,7 +50,10 @@ const mapDispatchToProps = (dispatch) => ({
       actionTypes.WW_RESET_KEY_ERROR
     ]
   }),
-  settingsTogglePassword: () => dispatch(settingsTogglePassword())
+  settingsTogglePassword: (checked) => {
+    dispatch(settingsTogglePassword())
+    LocalStorage.setItem('hidePassword', checked)
+  }
 })
 
 export default connect(

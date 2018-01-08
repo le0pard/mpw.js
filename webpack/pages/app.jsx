@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import GithubCorner from 'components/githubCorner'
+import GithubCorner from 'containers/githubCorner'
 import AppUpdate from 'containers/appUpdate'
+import ThemeSwitcher from 'containers/themeSwitcher'
 import {NavLink} from 'react-router-dom'
 import {renderRoutes} from 'react-router-config'
 
@@ -27,7 +28,7 @@ export default class AppLayout extends React.Component {
           <NavLink to="/algorithm">How It Works</NavLink>
         </div>
         <div className="app__navigation__item">
-          <a href="#">Theme: Light</a>
+          <ThemeSwitcher />
         </div>
       </nav>
     )

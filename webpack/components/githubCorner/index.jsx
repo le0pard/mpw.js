@@ -1,15 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {APP_THEMES} from 'reducers/settings'
 
 import './github-corner.sass'
 
 export default class GithubCorner extends React.Component {
   static propTypes = {
-    theme: PropTypes.oneOf(['light', 'dark'])
+    theme: PropTypes.oneOf(APP_THEMES)
   }
 
   static defaultProps = {
-    theme: 'dark'
+    theme: APP_THEMES[1]
   }
 
   svgStyles() {
@@ -25,7 +26,7 @@ export default class GithubCorner extends React.Component {
       right: 0
     }
 
-    if ('light' === theme) {
+    if (APP_THEMES[0] === theme) {
       return {
         ...baseStyles,
         fill: lightColor,

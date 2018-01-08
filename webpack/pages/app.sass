@@ -1,5 +1,9 @@
+@import 'mixins'
+@import 'variables'
+
 .app
   lost-center: 980px
+  @include variable(background-color, --bgColor, $base3)
 
 .app__main
   lost-column: 1

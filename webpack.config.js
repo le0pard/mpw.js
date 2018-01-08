@@ -47,7 +47,11 @@ const cssLoaders = [
               'last 2 version'
             ],
             features: {
-              rem: false
+              rem: false,
+              customProperties: {
+                warnings: false,
+                preserve: true
+              }
             }
           }),
           require('postcss-browser-reporter')(),

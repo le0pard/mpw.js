@@ -6,7 +6,6 @@ import {Field} from 'redux-form'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import CopyButton from 'components/copyButton'
-import LocalStorage from 'lib/localStorage'
 
 const INPUT_CHANGE_TIMEOUT = 150
 export const INPUT_TEMPLATES = [
@@ -59,8 +58,7 @@ export default class GenerateKey extends React.Component {
   }
 
   togglePasswordVisibility(e) {
-    this.props.settingsTogglePassword()
-    LocalStorage.setItem('hidePassword', e.target.checked)
+    this.props.settingsTogglePassword(e.target.checked)
   }
 
   displayPassword(password, hidePassword) {
