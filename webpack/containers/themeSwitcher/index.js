@@ -1,6 +1,6 @@
 import {connect} from 'react-redux'
 import {settingsToggleTheme} from 'reducers/settings'
-import {APP_THEMES} from 'reducers/settings'
+import {APP_THEMES_LIGHT, APP_THEMES_DARK} from 'reducers/settings'
 import LocalStorage from 'lib/localStorage'
 import ThemeSwitcher from 'components/themeSwitcher'
 
@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(settingsToggleTheme())
     LocalStorage.setItem(
       'theme',
-      APP_THEMES[0] === prevTheme ? APP_THEMES[1] : APP_THEMES[0]
+      APP_THEMES_LIGHT === prevTheme ? APP_THEMES_DARK : APP_THEMES_LIGHT
     )
   }
 })

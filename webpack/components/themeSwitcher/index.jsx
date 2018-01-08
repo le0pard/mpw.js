@@ -1,11 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {APP_THEMES} from 'reducers/settings'
+import {APP_THEMES_LIGHT, APP_THEMES_DARK} from 'reducers/settings'
 
 export default class ThemeSwitcher extends React.Component {
   static propTypes = {
-    theme: PropTypes.oneOf(APP_THEMES),
+    className: PropTypes.string,
+    theme: PropTypes.oneOf([APP_THEMES_LIGHT, APP_THEMES_DARK]),
     settingsToggleTheme: PropTypes.func.isRequired
+  }
+
+  static defaultProps = {
+    className: ''
   }
 
   constructor(props) {
@@ -37,12 +42,13 @@ export default class ThemeSwitcher extends React.Component {
   }
 
   render() {
-    const {theme} = this.props
+    const {className, theme} = this.props
 
     return (
-      <a onClick={this.handleToggleTheme.bind(this)} href="#">
-        {theme} theme
-      </a>
+      <a
+        onClick={this.handleToggleTheme.bind(this)}
+        href="#"
+        className={className}>{theme} theme</a>
     )
   }
 }

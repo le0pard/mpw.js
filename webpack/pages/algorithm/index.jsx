@@ -1,9 +1,11 @@
 import React from 'react'
 
+import './algorithm.sass'
+
 export default class AlgorithmPage extends React.Component {
   render() {
     return (
-      <div>
+      <div className="algorithm-page">
         <p>
           <strong>Master Password is an algorithm used to generate unique passwords</strong> for websites, email accounts, or anything else based only on easily reproducible input.
   The goal is a process that avoids all the problems involved with other password solutions.
