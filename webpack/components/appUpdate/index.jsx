@@ -8,7 +8,8 @@ export default class AppUpdate extends React.Component {
     isNewVersionAvailable: PropTypes.bool.isRequired
   }
 
-  reloadPage() {
+  reloadPage(e) {
+    e.preventDefault()
     window.location.reload()
   }
 

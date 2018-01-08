@@ -44,12 +44,12 @@ export default class AppLayout extends React.Component {
             to="/">Home</Link>
         </div>
         <div
-          className={classnames('app__navigation__item', {
+          className={classnames('app__navigation__big-item', {
             'app__navigation__item--active': this.isActive('/algorithm')
           })}>
           <Link
             className="app__navigation__link"
-            to="/algorithm">How It Works</Link>
+            to="/algorithm">How does it works?</Link>
         </div>
         <div className="app__navigation__item">
           <ThemeSwitcher className="app__navigation__link" />
