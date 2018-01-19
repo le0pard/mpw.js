@@ -2,10 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import _times from 'lodash/times'
 import _debounce from 'lodash/debounce'
+import classnames from 'classnames'
 import {Field} from 'redux-form'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import CopyButton from 'components/copyButton'
+
+import './generate-pass.sass'
 
 const INPUT_CHANGE_TIMEOUT = 150
 export const INPUT_TEMPLATES = [
@@ -83,22 +86,26 @@ export default class GenerateKey extends React.Component {
 
     return (
       <div>
-        <h1>Your password:</h1>
-        <input
-          type="text"
-          onFocus={(e) => e.target.select()}
-          readOnly={true}
-          value={this.displayPassword(password, hidePassword)} />
-        <input
-          id="passwordVisibilityId"
-          type="checkbox"
-          name="passwordVisibility"
-          defaultChecked={hidePassword}
-          onChange={this.togglePasswordVisibility.bind(this)} />
-        <label htmlFor="passwordVisibilityId">
-          Hide generated password
-        </label>
-        <CopyButton text={password} />
+        <h1 className="generate-pass__result-title">
+          Your password
+        </h1>
+        <div className="generate-pass__result-wrapper">
+          <input
+            type="text"
+            onFocus={(e) => e.target.select()}
+            readOnly={true}
+            value={this.displayPassword(password, hidePassword)} />
+          <input
+            id="passwordVisibilityId"
+            type="checkbox"
+            name="passwordVisibility"
+            defaultChecked={hidePassword}
+            onChange={this.togglePasswordVisibility.bind(this)} />
+          <label htmlFor="passwordVisibilityId">
+            Hide generated password
+          </label>
+          <CopyButton text={password} />
+        </div>
       </div>
     )
   }
@@ -110,44 +117,52 @@ export default class GenerateKey extends React.Component {
     } = this.props
 
     return (
-      <form
-        onChange={_debounce(this.formChangeBind, INPUT_CHANGE_TIMEOUT)}
-        onSubmit={this.handleFormSubmitFunc()}>
-        <div>
-          <a href="#" onClick={this.resetMpwKey.bind(this)}>Reset key</a>
+      <div>
+        <div className="generate-pass__reset-wrapper">
+          <a className="generate-pass__reset-link"
+            href="#" onClick={this.resetMpwKey.bind(this)}>
+            Reset master key
+          </a>
         </div>
-        <Field
-          name="site"
-          type="text"
-          component={FormField}
-          inputProps={{autoFocus: true, autoComplete: 'off'}}
-          label="Site"
-        />
-        <Field
-          name="counter"
-          type="number"
-          component={FormField}
-          inputProps={{step: 1, min: 1, max: 1000}}
-          label="Counter"
-        />
-        <Field
-          name="template"
-          component={FormDropdown}
-          label="Template"
-          options={INPUT_TEMPLATES}
-        />
-        <div>
-          <button type="submit" disabled={submitting}>
-            Generate Password
-          </button>
-          <button type="button"
-            disabled={pristine || submitting}
+        <form
+          onChange={_debounce(this.formChangeBind, INPUT_CHANGE_TIMEOUT)}
+          onSubmit={this.handleFormSubmitFunc()}>
+          <Field
+            name="site"
+            type="text"
+            component={FormField}
+            inputProps={{autoFocus: true, autoComplete: 'off'}}
+            label="Site"
+          />
+          <Field
+            name="counter"
+            type="number"
+            component={FormField}
+            inputProps={{step: 1, min: 1, max: 1000}}
+            label="Counter"
+          />
+          <Field
+            name="template"
+            component={FormDropdown}
+            label="Template"
+            options={INPUT_TEMPLATES}
+          />
+          <div className="generate-pass__buttons-wrapper">
+            <button className={classnames('generate-pass__submit-button', {
+              'generate-pass__submit-button--disabled': submitting
+            })} type="submit" disabled={submitting}>
+              Generate Password
+            </button>
+            <button className={classnames('generate-pass__reset-button', {
+              'generate-pass__reset-button--disabled': pristine || submitting
+            })} type="button" disabled={pristine || submitting}
             onClick={this.handleResetPassword.bind(this)}>
-            Clear Form
-          </button>
-        </div>
+              Clear Form
+            </button>
+          </div>
+        </form>
         {this.renderPassword()}
-      </form>
+      </div>
     )
   }
 }

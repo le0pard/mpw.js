@@ -3,7 +3,10 @@ import PropTypes from 'prop-types'
 import {Field} from 'redux-form'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
+import classnames from 'classnames'
 import Spinner from 'components/spinner'
+
+import './generate-key.sass'
 
 export default class GenerateKey extends React.Component {
   static propTypes = {
@@ -55,13 +58,15 @@ export default class GenerateKey extends React.Component {
               {label: 'V0', value: 0}
             ]}
           />
-          <div>
-            <button type="submit" disabled={submitting}>
+          <div className="generate-key__buttons-wrapper">
+            <button className={classnames('generate-key__submit-button', {
+              'generate-key__submit-button--disabled': submitting
+            })} type="submit" disabled={submitting}>
               Generate Master Key
             </button>
-            <button type="button"
-              disabled={pristine || submitting}
-              onClick={reset}>
+            <button className={classnames('generate-key__reset-button', {
+              'generate-key__reset-button--disabled': pristine || submitting
+            })} type="button" disabled={pristine || submitting} onClick={reset}>
               Clear Form
             </button>
           </div>

@@ -1,0 +1,34 @@
+@import 'variables'
+
+.generate-key__buttons-wrapper
+  lost-flex-container: row
+
+.generate-key__submit-button
+  lost-column: 2/3
+  lost-align: center
+  text-align: center
+  background-color: var(--headsColor)
+  color: var(--baseColor)
+  border: 1px solid var(--commentColor)
+  height: 55px
+
+  &:focus
+    outline: none
+
+  &--disabled
+    background-color: var(--commentColor)
+
+.generate-key__reset-button
+  lost-column: 1/3
+  lost-align: center
+  text-align: center
+  background-color: var(--bgColor)
+  color: var(--baseColor)
+  border: 1px solid var(--commentColor)
+  height: 55px
+
+  &:focus
+    outline: none
+
+  &--disabled
+    background-color: var(--commentColor)

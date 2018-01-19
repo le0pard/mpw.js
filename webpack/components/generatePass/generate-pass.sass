@@ -1,0 +1,51 @@
+@import 'variables'
+
+.generate-pass__reset-wrapper
+  lost-flex-container: row
+  lost-align: right
+
+.generate-pass__reset-link
+  lost-column: 1/3
+  text-align: right
+  padding: 0 20px 10px 0
+
+.generate-pass__buttons-wrapper
+  lost-flex-container: row
+
+.generate-pass__submit-button
+  lost-column: 2/3
+  lost-align: center
+  text-align: center
+  background-color: var(--headsColor)
+  color: var(--baseColor)
+  border: 1px solid var(--commentColor)
+  height: 55px
+
+  &:focus
+    outline: none
+
+  &--disabled
+    background-color: var(--commentColor)
+
+.generate-pass__reset-button
+  lost-column: 1/3
+  lost-align: center
+  text-align: center
+  background-color: var(--bgColor)
+  color: var(--baseColor)
+  border: 1px solid var(--commentColor)
+  height: 55px
+
+  &:focus
+    outline: none
+
+  &--disabled
+    background-color: var(--commentColor)
+
+.generate-pass__result-title
+  font-size: responsive 12px 21px
+  font-range: 320px 980px
+
+.generate-pass__result-wrapper
+  lost-flex-container: row
+  lost-align: center
