@@ -6,6 +6,7 @@ const COPIED_TIMEOUT = 1500
 
 export default class CopyButton extends React.Component {
   static propTypes = {
+    className: PropTypes.string,
     text: PropTypes.string.isRequired,
     label: PropTypes.string,
     successLabel: PropTypes.string,
@@ -74,10 +75,11 @@ export default class CopyButton extends React.Component {
   }
 
   render() {
-    const {text} = this.props
+    const {text, className} = this.props
 
     return (
       <button
+        className={className}
         ref={(r) => this.buttonRef(r)}
         data-clipboard-text={text}>
         {this.renderLabel()}

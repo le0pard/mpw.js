@@ -90,21 +90,31 @@ export default class GenerateKey extends React.Component {
           Your password
         </h1>
         <div className="generate-pass__result-wrapper">
-          <input
-            type="text"
-            onFocus={(e) => e.target.select()}
-            readOnly={true}
-            value={this.displayPassword(password, hidePassword)} />
-          <input
-            id="passwordVisibilityId"
-            type="checkbox"
-            name="passwordVisibility"
-            defaultChecked={hidePassword}
-            onChange={this.togglePasswordVisibility.bind(this)} />
-          <label htmlFor="passwordVisibilityId">
-            Hide generated password
-          </label>
-          <CopyButton text={password} />
+          <div className="generate-pass__result-inputs">
+            <input
+              className="generate-pass__result-password"
+              type="text"
+              onFocus={(e) => e.target.select()}
+              readOnly={true}
+              value={this.displayPassword(password, hidePassword)} />
+            <div>
+              <input
+                className="generate-pass__password-visibility-input"
+                id="passwordVisibilityId"
+                type="checkbox"
+                name="passwordVisibility"
+                defaultChecked={hidePassword}
+                onChange={this.togglePasswordVisibility.bind(this)} />
+              <label
+                className="generate-pass__password-visibility-label" 
+                htmlFor="passwordVisibilityId">
+                Hide generated password
+              </label>
+            </div>
+          </div>
+          <CopyButton
+            className="generate-pass__result-copy-button"
+            text={password} />
         </div>
       </div>
     )
