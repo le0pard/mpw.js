@@ -2,11 +2,11 @@
 
 module MpwHelpers
   def javascript_pack_tag(name)
-    %(<script src="#{asset_path("#{name}.js")}" defer="defer"></script>)
+    %(<script src="#{asset_path("#{name}.js")}" defer="defer" async="async"></script>)
   end
 
   def stylesheet_pack_tag(name)
-    %(<link rel='stylesheet' href="#{asset_path("#{name}.css")}"></link>)
+    %(<link href="#{asset_path("#{name}.css")}" rel="stylesheet" media="all"></link>)
   end
 
   def asset_path(name)
