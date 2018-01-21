@@ -106,7 +106,7 @@ export default class GenerateKey extends React.Component {
                 defaultChecked={hidePassword}
                 onChange={this.togglePasswordVisibility.bind(this)} />
               <label
-                className="generate-pass__password-visibility-label" 
+                className="generate-pass__password-visibility-label"
                 htmlFor="passwordVisibilityId">
                 Hide generated password
               </label>
