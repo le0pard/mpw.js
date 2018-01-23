@@ -29,7 +29,7 @@ assets_dir = ".tmp/dist"
 activate :external_pipeline,
   name: :webpack,
   command: build? ?
-    "rm #{assets_dir}/* && NODE_ENV=production ./node_modules/.bin/webpack --bail" :
+    "rm -fr '#{assets_dir}/*' && NODE_ENV=production ./node_modules/.bin/webpack --bail" :
     './node_modules/.bin/webpack --watch -d --color',
   source: assets_dir,
   latency: 1
@@ -76,11 +76,7 @@ configure :build do
 end
 
 activate :s3_sync do |s3_sync|
-  s3_sync.bucket                     = ENV['AWS_BUCKET'] # The name of the S3 bucket you are targeting. This is globally unique.
-  s3_sync.region                     = 'us-west-1'     # The AWS region for your bucket.
-  s3_sync.aws_access_key_id          = ENV['AWS_ACCESS_KEY_ID']
-  s3_sync.aws_secret_access_key      = ENV['AWS_SECRET_ACCESS_KEY']
-  s3_sync.delete                     = false # We delete stray files by default.
+  s3_sync.delete                     = true # We delete stray files by default.
   s3_sync.after_build                = false # We do not chain after the build step by default.
   s3_sync.prefer_gzip                = true
   s3_sync.path_style                 = true

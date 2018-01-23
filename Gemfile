@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'middleman', '>= 4.2'
 gem 'middleman-minify-html', '>= 3.4.1' # min html
 gem 'middleman-s3_sync', '>= 4.0.3' # Deploy site
+gem 'mime-types'
 
 gem 'therubyracer'   # faster ExecJS
 gem 'oj', '>= 2.10.4'           # faster JSON
