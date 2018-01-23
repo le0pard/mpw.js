@@ -2,6 +2,8 @@
 
 MPW.js is a JavaScript implementation of the Master Password App ([Lyndir/MasterPassword](https://github.com/Lyndir/MasterPassword)) algorithm ([http://masterpasswordapp.com/algorithm.html](http://masterpasswordapp.com/algorithm.html)).
 
+### [Working app](https://mpw.leopard.in.ua/)
+
 ### Development
 
 1. Install Ruby (version inside `.ruby-version`) and Node.js (version inside `.node-version`)
