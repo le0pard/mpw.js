@@ -2,7 +2,6 @@ import GenerateKey from 'components/generateKey'
 import {actionTypes} from 'reducers/ww/constants'
 import {reduxForm} from 'redux-form'
 import {connect} from 'react-redux'
-import {VERSION} from 'lib/mpw'
 
 const validate = (values) => {
   const errors = {}
@@ -37,6 +36,6 @@ export default connect(
   form: 'generateKeyForm',
   validate,
   initialValues: {
-    version: VERSION
+    version: 3 // use latest version
   }
 })(GenerateKey))
