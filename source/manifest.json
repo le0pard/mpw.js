@@ -4,7 +4,7 @@
   "icons": [],
   "display": "standalone",
   "start_url": "index.html?utm_source=web_app_manifest",
-  "theme_color": "#EEE8D5",
-  "background_color": "#EEE8D5",
+  "theme_color": "#fdf6e3",
+  "background_color": "#fdf6e3",
   "orientation": "portrait"
 }

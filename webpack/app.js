@@ -26,7 +26,7 @@ const prepareStoreData = () => ({
     theme: LocalStorage.getItem('theme') || APP_THEMES_LIGHT
   }
 })
-
+// init store and start app
 const appRoot = document.getElementById('app-root')
 const store = initializeStore(prepareStoreData())
 renderApp(Root, appRoot, store)
