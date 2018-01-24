@@ -38,7 +38,12 @@ export default class GenerateKey extends React.Component {
             name="name"
             type="text"
             component={FormField}
-            inputProps={{autoFocus: true, autoComplete: 'on'}}
+            inputProps={{
+              autoFocus: true,
+              autoComplete: 'on',
+              autoCorrect: 'off',
+              autoCapitalize: 'none'
+            }}
             label="Name"
           />
           <Field

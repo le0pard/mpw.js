@@ -21,3 +21,9 @@ $ bundle exec middleman
 ```
 
 and visit `http://localhost:4567`
+
+### Deploy
+
+```bash
+$ bundle exec rake release
+```
