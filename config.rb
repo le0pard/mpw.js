@@ -70,6 +70,8 @@ set :encoding, "utf-8"
 #   activate :minify_javascript
 # end
 
+set :images_dir, 'images'
+
 activate :gzip, exts: %w(.css .htm .html .js .svg .xhtml)
 
 configure :build do

@@ -5,6 +5,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Master Password Generator" />
     <meta name="theme-color" content="#fdf6e3" />
     <meta http-equiv="Content-Security-Policy"
       content="default-src 'self'; child-src 'self'; object-src 'self';
@@ -12,10 +13,27 @@
       img-src * data:; media-src 'none'; frame-src 'none'; font-src 'self' data:;
       connect-src 'none'; form-action 'none'; worker-src 'self'">
     <link rel="manifest" href="/manifest.json" />
+    <link rel="preload" href="<%= asset_path('app.css') %>" as="style" />
     <title>
       <%= current_page.data.title || "Master Password Generator" %>
     </title>
     <%= stylesheet_pack_tag "app" %>
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/images/favicons/apple-touch-icon-152x152-precomposed.png" />
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/favicons/apple-touch-icon-144x144-precomposed.png" />
+    <!-- For iPhone with high-resolution Retina display: -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/favicons/apple-touch-icon-114x114-precomposed.png" />
+    <!-- For first- and second-generation iPad: -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/images/favicons/apple-touch-icon-76x76-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/favicons/apple-touch-icon-72x72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="/images/favicons/apple-touch-icon-60x60-precomposed.png" />
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <link rel="apple-touch-icon-precomposed" href="/images/favicons/apple-touch-icon-precomposed.png" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/images/favicons/favicon.png" />
+    <link rel="icon" type="image/ico" href="/images/favicons/favicon.ico" />
   </head>
   <body>
     <%= yield %>
