@@ -157,7 +157,7 @@ export default class GenerateKey extends React.Component {
               step: 1,
               min: 1,
               max: 1000,
-              pattern: '\d*'
+              pattern: '[0-9]*'
             }}
             label="Counter"
           />
