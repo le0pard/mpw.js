@@ -153,7 +153,12 @@ export default class GenerateKey extends React.Component {
             name="counter"
             type="number"
             component={FormField}
-            inputProps={{step: 1, min: 1, max: 1000}}
+            inputProps={{
+              step: 1,
+              min: 1,
+              max: 1000,
+              pattern: '\d*'
+            }}
             label="Counter"
           />
           <Field
