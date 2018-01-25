@@ -70,6 +70,8 @@ set :encoding, "utf-8"
 #   activate :minify_javascript
 # end
 
+activate :gzip, exts: %w(.css .htm .html .js .svg .xhtml)
+
 configure :build do
   # min html
   activate :minify_html
