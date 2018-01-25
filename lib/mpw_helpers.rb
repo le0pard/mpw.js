@@ -1,12 +1,17 @@
 # encoding: utf-8
+require 'digest'
 
 module MpwHelpers
   def javascript_pack_tag(name)
-    %(<script src="#{asset_path("#{name}.js")}" defer="defer" async="async"></script>)
+    file_name = "#{name}.js"
+    %(<script src="#{asset_path(file_name)}"
+      integrity="#{integrity_hash(file_name)}"
+      defer="defer" async="async"></script>)
   end
 
   def stylesheet_pack_tag(name)
-    %(<link href="#{asset_path("#{name}.css")}" rel="stylesheet" media="all"></link>)
+    file_name = "#{name}.css"
+    %(<link href="#{asset_path(file_name)}" rel="stylesheet" media="all"></link>)
   end
 
   def asset_path(name)
@@ -21,5 +26,15 @@ module MpwHelpers
                     end
 
     manifest_data[name.to_s]
+  end
+
+  def integrity_hash(file)
+    file_path = File.expand_path File.join(
+      File.dirname(__FILE__),
+      "../.tmp/dist#{asset_path(file)}",
+    )
+
+    digest = Digest::SHA512.new.update(File.read(file_path)).digest
+    "sha512-#{[digest].pack('m0')}"
   end
 end
