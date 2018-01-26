@@ -80,6 +80,8 @@ configure :build do
 end
 
 activate :s3_sync do |s3_sync|
+  default_caching_policy public: true, max_age: (60 * 60 * 24 * 365)
+
   s3_sync.delete                     = true # We delete stray files by default.
   s3_sync.after_build                = false # We do not chain after the build step by default.
   s3_sync.prefer_gzip                = true
