@@ -16,6 +16,7 @@ Encoding.default_internal = Encoding::UTF_8
 page '/*.xml', layout: false
 page '/*.json', layout: false
 page '/*.txt', layout: false
+page '/404.html', layout: false
 
 ###
 # Helpers
