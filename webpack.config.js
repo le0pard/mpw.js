@@ -40,7 +40,9 @@ const cssLoaders = [
             addDependencyTo: webpack
           }),
           require('postcss-url')(),
-          require('lost'),
+          require('lost')({
+            flexbox: 'flex'
+          }),
           require('rucksack-css')(),
           require('postcss-cssnext')({
             browsers: [
