@@ -172,9 +172,18 @@ if (isProduction) {
 
 config.plugins.push(
   new OfflinePlugin({
+    cache: {
+      main: [
+        '*.js',
+        '*.css',
+        '*.png',
+        '*.svg'
+      ],
+    },
     excludes: [
       '**/.*',
-      '**/*.map'
+      '**/*.map',
+      '**/*.gz'
     ],
     externals: [
       '/'
