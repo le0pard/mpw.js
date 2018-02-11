@@ -7,7 +7,7 @@ import LocalStorage from 'lib/localStorage'
 import {initializeStore} from './redux/store'
 import {initServiceWorker} from './sw'
 import {initWebWorker} from './ww'
-
+// render app
 const renderApp = (Component, appRoot, store) => {
   initWebWorker(appRoot, store)
   initServiceWorker(store)
