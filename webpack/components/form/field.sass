@@ -1,3 +1,4 @@
+@import 'functions'
 @import 'variables'
 
 .form-field
@@ -13,10 +14,8 @@
 
 .form-field__input
   width: 99%
-  font-size: responsive 28px 35px
-  font-range: 420px 980px
+  @include responsive-font-size(28px 35px)
 
 .form-field__error
   color: $red
-  font-size: responsive 14px 20px
-  font-range: 420px 980px
+  @include responsive-font-size(16px 20px)

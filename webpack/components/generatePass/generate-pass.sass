@@ -1,3 +1,5 @@
+@import 'functions'
+
 .generate-pass__reset-wrapper
   lost-flex-container: row
   lost-align: right
@@ -54,8 +56,7 @@
 
 .generate-pass__result-password
   width: 99%
-  font-size: responsive 28px 35px
-  font-range: 420px 980px
+  @include responsive-font-size(28px 35px)
 
 .generate-pass__password-visibility-input
   margin: 10px
