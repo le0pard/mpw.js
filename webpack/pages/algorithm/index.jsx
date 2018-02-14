@@ -1,9 +1,17 @@
 import React from 'react'
-import processImg from './process.png'
+import PropTypes from 'prop-types'
+import {connect} from 'react-redux'
+import {APP_THEMES_LIGHT, APP_THEMES_DARK} from 'reducers/settings'
+import processLightImg from './process_light.svg'
+import processDarkImg from './process_dark.svg'
 
 import './algorithm.sass'
 
-export default class AlgorithmPage extends React.Component {
+class AlgorithmPage extends React.Component {
+  static propTypes = {
+    theme: PropTypes.oneOf([APP_THEMES_LIGHT, APP_THEMES_DARK])
+  }
+
   masterKeyCode() {
     return `key   = scrypt( P, S, N, r, p, dkLen )
 where
@@ -26,6 +34,11 @@ passWord[i] = passChar`
   }
 
   render() {
+    const {theme} = this.props
+    const processImage = (
+      theme === APP_THEMES_LIGHT ? processLightImg : processDarkImg
+    )
+
     return (
       <div className="algorithm-page">
         <p>
@@ -37,7 +50,7 @@ passWord[i] = passChar`
         </p>
         <h2>How Does It Work?</h2>
         <div>
-          <img className="algorithm-page__how-image" src={processImg} alt="How master password works" />
+          <img className="algorithm-page__how-image" src={processImage} alt="How master password works" />
         </div>
         <p>The user is expected to remember the following information:</p>
         <ul>
@@ -85,3 +98,11 @@ passWord[i] = passChar`
     )
   }
 }
+
+const mapStateToProps = (state) => ({
+  theme: state.settings.theme
+})
+
+export default connect(
+  mapStateToProps
+)(AlgorithmPage)
