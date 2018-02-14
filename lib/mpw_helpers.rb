@@ -11,7 +11,7 @@ module MpwHelpers
 
   def stylesheet_pack_tag(name)
     file_name = "#{name}.css"
-    %(<link href="#{asset_path(file_name)}" rel="stylesheet" media="all"></link>)
+    %(<link href="#{asset_path(file_name)}" rel="stylesheet" media="all" />)
   end
 
   def asset_path(name)
