@@ -36,7 +36,7 @@ passWord[i] = passChar`
   render() {
     const {theme} = this.props
     const processImage = (
-      theme === APP_THEMES_LIGHT ? processLightImg : processDarkImg
+      APP_THEMES_LIGHT === theme ? processLightImg : processDarkImg
     )
 
     return (
