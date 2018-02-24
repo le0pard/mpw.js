@@ -42,6 +42,10 @@ export default class GithubCorner extends React.Component {
   }
 
   render() {
+    if (!window.matchMedia("(min-width: 500px)").matches) {
+      return null // hide for small screens
+    }
+
     return (
       <a href="https://github.com/le0pard/mpw.js" className="github-corner" aria-label="View source on Github">
         <svg width="80" height="80" viewBox="0 0 250 250" style={this.svgStyles()} aria-hidden="true">
