@@ -42,7 +42,7 @@ export default class GithubCorner extends React.Component {
   }
 
   render() {
-    if (!window.matchMedia("(min-width: 500px)").matches) {
+    if (!window.matchMedia('(min-width: 500px)').matches) {
       return null // hide for small screens
     }
 
