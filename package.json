@@ -60,7 +60,7 @@
     "redux-saga": "0.16.0",
     "rucksack-css": "^1.0.2",
     "sass-loader": "6.0.7",
-    "style-loader": "0.20.2",
+    "style-loader": "0.20.3",
     "text-encoding": "^0.6.4",
     "url-loader": "1.0.1",
     "webpack": "3.11.0",
