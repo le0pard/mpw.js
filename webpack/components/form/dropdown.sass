@@ -4,14 +4,17 @@
 .form-dropdown
   margin-bottom: 15px
 
-.form-dropdown__wrapper
-  width: 99%
-  @include responsive-font-size(28px 35px)
+  &__wrapper
+    width: 99%
+    @include responsive-font-size(28px 35px)
 
-.form-dropdown__label
-  padding-right: 10px
+  &__select
+    color: var(--baseColor)
 
-.form-dropdown__error
-  lost-row: 1
-  color: $red
-  @include responsive-font-size(16px 20px)
+  &__label
+    padding-right: 10px
+
+  &__error
+    lost-row: 1
+    color: $red
+    @include responsive-font-size(16px 20px)

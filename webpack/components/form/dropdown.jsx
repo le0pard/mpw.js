@@ -39,7 +39,7 @@ export default class FormDropdown extends React.Component {
           <label className="form-dropdown__label" htmlFor={dropdownID}>
             {label}
           </label>
-          <select {...input} id={dropdownID}>
+          <select className="form-dropdown__select" {...input} id={dropdownID}>
             {options.map((option, index) => {
               return (
                 <option key={index} value={option.value}>

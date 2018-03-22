@@ -48,7 +48,7 @@ export default class ThemeSwitcher extends React.Component {
       <a
         onClick={this.handleToggleTheme.bind(this)}
         href="#"
-        className={className}>{theme} theme</a>
+        className={className}>{theme}</a>
     )
   }
 }
