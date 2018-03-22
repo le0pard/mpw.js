@@ -4,12 +4,13 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const OfflinePlugin = require('offline-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
 // set NODE_ENV=production on the environment to add asset fingerprints
-const currentEnv = process.env.NODE_ENV;
+const currentEnv = process.env.NODE_ENV || 'development';
 const isProduction = currentEnv === 'production';
 
 const preScripts = {
@@ -66,6 +67,7 @@ const cssLoaders = [
 
 const config = {
   target: 'web',
+  mode: currentEnv,
   entry: {
     'app': preScriptsEnv.concat(['./webpack/app.js']),
     'web-worker': preScriptsEnv.concat(['./webpack/webWorker.js'])
@@ -153,13 +155,19 @@ if (isProduction) {
     new webpack.DefinePlugin({
       'process.env': {NODE_ENV: JSON.stringify('production')}
     }),
-    new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {warnings: false},
-      sourceMap: true,
-      mangle: true
-    })
+    new webpack.optimize.ModuleConcatenationPlugin()
   );
+  config.optimization = config.optimization || {};
+  config.optimization.minimizer = [
+    new UglifyJSPlugin({
+      parallel: 2,
+      sourceMap: true,
+      uglifyOptions: {
+        compressor: {warnings: false},
+        mangle: true
+      }
+    })
+  ];
   // Source maps
   config.devtool = 'source-map';
 } else {
