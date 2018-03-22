@@ -68,6 +68,9 @@ const cssLoaders = [
 const config = {
   target: 'web',
   mode: currentEnv,
+  performance: {
+    hints: false
+  },
   entry: {
     'app': preScriptsEnv.concat(['./webpack/app.js']),
     'web-worker': preScriptsEnv.concat(['./webpack/webWorker.js'])
