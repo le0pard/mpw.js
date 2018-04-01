@@ -86,9 +86,9 @@ export default class GenerateKey extends React.Component {
 
     return (
       <div>
-        <h1 className="generate-pass__result-title">
+        <h2 className="generate-pass__result-title">
           Your password
-        </h1>
+        </h2>
         <div className="generate-pass__result-wrapper">
           <div className="generate-pass__result-inputs">
             <input
