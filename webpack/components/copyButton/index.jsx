@@ -21,6 +21,7 @@ export default class CopyButton extends React.Component {
 
   constructor(props) {
     super(props)
+    this.copyButton = React.createRef()
     this.initialState = {
       copiedSuccess: false,
       copiedError: false
@@ -37,8 +38,8 @@ export default class CopyButton extends React.Component {
   }
 
   componentDidMount() {
-    if (this.copyButton) {
-      this.clipboard = new Clipboard(this.copyButton)
+    if (this.copyButton && this.copyButton.current) {
+      this.clipboard = new Clipboard(this.copyButton.current)
       this.clipboard.on('success', () => {
         this.setState(() => ({copiedSuccess: true}))
         this.resetState()
@@ -55,10 +56,6 @@ export default class CopyButton extends React.Component {
       this.clipboard.destroy()
       this.clipboard = null
     }
-  }
-
-  buttonRef(r) {
-    this.copyButton = r
   }
 
   renderLabel() {
@@ -80,7 +77,7 @@ export default class CopyButton extends React.Component {
     return (
       <button
         className={className}
-        ref={(r) => this.buttonRef(r)}
+        ref={this.copyButton}
         data-clipboard-text={text}>
         {this.renderLabel()}
       </button>
