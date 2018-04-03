@@ -1,8 +1,6 @@
 import {combineReducers} from 'redux'
 import {createAction, createReducer} from 'redux-act'
-
-export const APP_THEMES_LIGHT = 'light'
-export const APP_THEMES_DARK = 'dark'
+import {APP_THEMES_LIGHT, APP_THEMES_DARK} from './constants'
 
 export const settingsTogglePassword = createAction('Toggle password visibility')
 export const settingsToggleTheme = createAction('Toggle app theme')

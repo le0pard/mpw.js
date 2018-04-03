@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {APP_THEMES_LIGHT, APP_THEMES_DARK} from 'reducers/settings'
+import {APP_THEMES_LIGHT, APP_THEMES_DARK} from 'reducers/settings/constants'
 import processLightImg from './process_light.svg'
 import processDarkImg from './process_dark.svg'
 
