@@ -9,7 +9,13 @@
     font-size: 1.8rem
 
   &__select
-    color: var(--baseColor)
+    color: var(--emphColor)
+    border-radius: 6px
+    border: 1px solid var(--commentColor)
+    background-color: color(var(--headsColor) tint(4%))
+
+    &:focus
+      outline: none
 
   &__label
     padding-right: 0.4rem
