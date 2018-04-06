@@ -10,7 +10,6 @@ export default class FormField extends React.Component {
     type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     inputProps: PropTypes.object,
-    autoFocus: PropTypes.bool,
     meta: PropTypes.shape({
       touched: PropTypes.bool.isRequired,
       error: PropTypes.string
