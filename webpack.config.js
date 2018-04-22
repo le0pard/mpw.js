@@ -142,7 +142,7 @@ const config = {
 
   plugins: [
     new MiniCssExtractPlugin({
-      filename: isProduction ? '[name]-[hash].css' : '[name].css'
+      filename: isProduction ? '[name]-[contenthash].css' : '[name].css'
     })
   ],
 
