@@ -46,7 +46,8 @@ const cssLoaders = [
           require('rucksack-css')(),
           require('postcss-cssnext')({
             browsers: [
-              'last 2 version'
+              '>0.25%',
+              'not op_mini all'
             ],
             features: {
               rem: false,
