@@ -82,7 +82,8 @@
               "not op_mini all"
             ]
           },
-          "modules": false
+          "modules": false,
+          "useBuiltIns": true
         }
       ],
       "react"
