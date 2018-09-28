@@ -289,7 +289,9 @@ template {
   --inputColorPlaceholder: color-mod(#eee8d5 shade(30%)); }
 html {
   font-size: calc(18px + 4 * ((100vw - 420px) / 560));
+  background-color: #eee8d5;
   background-color: var(--headsColor);
+  color: #657b83;
   color: var(--baseColor); }
 @media screen and (min-width: 980px) {
   html {
@@ -946,4 +948,4 @@ input[type=number]::-webkit-outer-spin-button {
   max-width: 100%; }
 
 
-/*# sourceMappingURL=app-1d494c08c5d3a33487df.css.map*/
+/*# sourceMappingURL=app-2ee4e77eec633f694793.css.map*/
