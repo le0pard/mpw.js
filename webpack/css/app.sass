@@ -8,11 +8,11 @@
   --headsColor: $base2
   --emphColor: $base01
   --commentColor: $base1
-  --inputBg: color-mod($base3 tint(4%))
+  --inputBg: lighten($base3, 4)
   --inputBgDisabled: $base1
   --inputColor: $base02
   --inputBorder: $base1
-  --inputColorPlaceholder: color-mod($base02 tint(30%))
+  --inputColorPlaceholder: lighten($base02, 30)
 
 \:root.dark
   --baseColor: $base0
@@ -24,7 +24,7 @@
   --inputBgDisabled: $base01
   --inputColor: $base2
   --inputBorder: $base01
-  --inputColorPlaceholder: color-mod($base2 shade(30%))
+  --inputColorPlaceholder: darken($base2, 30%)
 
 html
   @include responsive-font-size(18px 22px)
