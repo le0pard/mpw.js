@@ -276,11 +276,11 @@ template {
   --headsColor: #eee8d5;
   --emphColor: #586e75;
   --commentColor: #93a1a1;
-  --inputBg: color-mod(#fdf6e3 tint(4%));
+  --inputBg: #fefcf6;
   --inputBgDisabled: #93a1a1;
   --inputColor: #073642;
   --inputBorder: #93a1a1;
-  --inputColorPlaceholder: color-mod(#073642 tint(30%)); }
+  --inputColorPlaceholder: #16a7cc; }
 :root.dark {
   --baseColor: #839496;
   --bgColor: #002b36;
@@ -291,7 +291,7 @@ template {
   --inputBgDisabled: #586e75;
   --inputColor: #eee8d5;
   --inputBorder: #586e75;
-  --inputColorPlaceholder: color-mod(#eee8d5 shade(30%)); }
+  --inputColorPlaceholder: #c2ac68; }
 html {
   font-size: calc(18px + 4 * ((100vw - 420px) / 560));
   background-color: #eee8d5;
@@ -953,4 +953,4 @@ input[type=number]::-webkit-outer-spin-button {
   max-width: 100%; }
 
 
-/*# sourceMappingURL=app-cd5bc405279771d9ef33.css.map*/
+/*# sourceMappingURL=app-467bc0b8eff81e11e4e6.css.map*/
