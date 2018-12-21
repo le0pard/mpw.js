@@ -1,23 +1,13 @@
 import config from 'config'
 import {createStore, applyMiddleware} from 'redux'
 import {createLogger} from 'redux-logger'
-import createSagaMiddleware from 'redux-saga'
 import {loggers} from 'redux-act'
 import rootReducer from './rootReducer'
-import createHistory from 'history/createHashHistory'
-import {routerMiddleware} from 'react-router-redux'
-import rootSaga from 'sagas/rootSaga'
 import {webWorkerMiddleware} from './middlewares'
 
-export const routerHistory = createHistory()
-
 export const initializeStore = (preloadedState = null) => {
-  const sagaMiddleware = createSagaMiddleware()
-
   let middlewares = [
-    webWorkerMiddleware,
-    routerMiddleware(routerHistory),
-    sagaMiddleware
+    webWorkerMiddleware
   ]
 
   if (config.logger.reduxEnabled) {
@@ -43,8 +33,6 @@ export const initializeStore = (preloadedState = null) => {
 
     return createStore(...storeArg)
   })()
-
-  sagaMiddleware.run(rootSaga)
 
   if (module.hot) {
     module.hot.accept('./root_reducer', () => {
