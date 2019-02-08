@@ -25,7 +25,7 @@ page '/404.html', layout: false
 require "lib/mpw_helpers"
 helpers MpwHelpers
 
-assets_dir = ".tmp/dist"
+assets_dir = ::File.expand_path('../.tmp/dist', __FILE__)
 
 activate :external_pipeline,
   name: :webpack,
