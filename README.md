@@ -1,4 +1,4 @@
-## Master password generator [![Build Status](https://travis-ci.org/le0pard/mpw.js.svg?branch=master)](https://travis-ci.org/le0pard/mpw.js)
+## Master password generator [![Build Status](https://travis-ci.com/le0pard/mpw.js.svg?branch=master)](https://travis-ci.com/le0pard/mpw.js)
 
 MPW.js is a JavaScript implementation of the [Master Password](https://en.wikipedia.org/wiki/Master_Password) algorithm ([https://masterpassword.app/masterpassword-algorithm.pdf](https://masterpassword.app/masterpassword-algorithm.pdf)).
 
