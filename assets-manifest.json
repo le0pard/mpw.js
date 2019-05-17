@@ -1,9 +1,9 @@
 {
-  "app.css": "/app-8f94ac90ac26ce848754.css",
-  "app.js": "/app-8b331f821f56b2071e28.js",
-  "app.css.map": "/app-8f94ac90ac26ce848754.css.map",
-  "app.js.map": "/app-8b331f821f56b2071e28.js.map",
-  "web-worker.js": "/web-worker-50d0d6dbffa4fc172d37.js",
-  "web-worker.js.map": "/web-worker-50d0d6dbffa4fc172d37.js.map",
+  "app.css": "/app-aff63751b126bd5ee814.css",
+  "app.js": "/app-d947321ae19797486fcc.js",
+  "app.css.map": "/app-aff63751b126bd5ee814.css.map",
+  "app.js.map": "/app-d947321ae19797486fcc.js.map",
+  "web-worker.js": "/web-worker-091f39cde0e399fc1087.js",
+  "web-worker.js.map": "/web-worker-091f39cde0e399fc1087.js.map",
   "sw.js": "/sw.js"
 }
