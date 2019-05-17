@@ -7,7 +7,6 @@ import './field.sass'
 export default class FormField extends React.Component {
   static propTypes = {
     input: PropTypes.object.isRequired,
-    type: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
     inputProps: PropTypes.object,
     meta: PropTypes.shape({
@@ -24,7 +23,6 @@ export default class FormField extends React.Component {
     const {
       label,
       input,
-      type,
       inputProps,
       meta: {touched, error}
     } = this.props
@@ -42,8 +40,7 @@ export default class FormField extends React.Component {
             {...inputProps}
             className="form-field__input"
             placeholder={label}
-            aria-label={label}
-            type={type} />
+            aria-label={label} />
         </div>
         {isError && <div className="form-field__error">{error}</div>}
       </div>
