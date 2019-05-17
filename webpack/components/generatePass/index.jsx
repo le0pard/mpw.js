@@ -54,13 +54,16 @@ export default class GenerateKey extends React.Component {
     settingsTogglePassword: PropTypes.func.isRequired
   }
 
+  componentWillUnmount() {
+    this.props.formResetPassword()
+  }
+
   handlePasswordGeneration(values) {
     this.props.onSubmitForm(values)
   }
 
   handleResetPassword(reset) {
-    const {formResetPassword} = this.props
-    formResetPassword()
+    this.props.formResetPassword()
     reset()
   }
 
