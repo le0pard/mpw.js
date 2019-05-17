@@ -37,6 +37,7 @@ export default class GenerateKey extends React.Component {
         onSubmit={this.handleGenerateKey.bind(this)}
         initialValues={{version: 3}}
         validate={validate}
+        subscription={{submitting: true, pristine: true}}
         render={({handleSubmit, pristine, submitting, form}) => (
           <div>
             <form onSubmit={handleSubmit}>

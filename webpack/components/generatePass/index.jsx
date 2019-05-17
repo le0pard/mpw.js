@@ -146,7 +146,7 @@ export default class GenerateKey extends React.Component {
           onSubmit={this.handlePasswordGeneration.bind(this)}
           initialValues={{counter: 1, template: 'long'}}
           validate={validate}
-          subscription={{}}
+          subscription={{submitting: true}}
           render={({handleSubmit, pristine, submitting, form}) => (
             <form
               onSubmit={handleSubmit}>
