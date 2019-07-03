@@ -9,6 +9,7 @@ export default class FormDropdown extends React.Component {
   static propTypes = {
     label: PropTypes.string.isRequired,
     field: PropTypes.shape({
+      name: PropTypes.string.isRequired,
       value: PropTypes.any
     }).isRequired,
     form: PropTypes.shape({
