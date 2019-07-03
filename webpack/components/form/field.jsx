@@ -6,28 +6,28 @@ import './field.sass'
 
 export default class FormField extends React.Component {
   static propTypes = {
-    input: PropTypes.object.isRequired,
     label: PropTypes.string.isRequired,
-    inputProps: PropTypes.object,
-    meta: PropTypes.shape({
-      touched: PropTypes.bool.isRequired,
-      error: PropTypes.string
+    field: PropTypes.shape({
+      value: PropTypes.any
+    }).isRequired,
+    form: PropTypes.shape({
+      touched: PropTypes.object,
+      errors: PropTypes.object
     }).isRequired
-  }
-
-  static defaultProps = {
-    inputProps: {}
   }
 
   render() {
     const {
       label,
-      input,
-      inputProps,
-      meta: {touched, error}
+      field,
+      form: {
+        touched,
+        errors
+      },
+      ...props
     } = this.props
 
-    const isError = touched && error
+    const isError = touched[field.name] && errors[field.name]
 
     return (
       <div
@@ -36,13 +36,13 @@ export default class FormField extends React.Component {
         })}>
         <div className="form-field__input-wrapper">
           <input
-            {...input}
-            {...inputProps}
+            {...field}
+            {...props}
             className="form-field__input"
             placeholder={label}
             aria-label={label} />
         </div>
-        {isError && <div className="form-field__error">{error}</div>}
+        {isError && <div className="form-field__error">{errors[field.name]}</div>}
       </div>
     )
   }

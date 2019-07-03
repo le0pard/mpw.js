@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import _times from 'lodash/times'
 import _debounce from 'lodash/debounce'
 import classnames from 'classnames'
-import {Form, Field, FormSpy} from 'react-final-form'
+import {Formik, Field, Form} from 'formik'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import CopyButton from 'components/copyButton'
@@ -58,8 +58,9 @@ export default class GenerateKey extends React.Component {
     this.props.formResetPassword()
   }
 
-  handlePasswordGeneration(values) {
+  handlePasswordGeneration(values, {setSubmitting}) {
     this.props.onSubmitForm(values)
+    setSubmitting(false)
   }
 
   handleResetPassword(reset) {
@@ -127,12 +128,6 @@ export default class GenerateKey extends React.Component {
     )
   }
 
-  useAutoSubmit(handleSubmit) {
-    return (
-      <FormSpy onChange={_debounce(handleSubmit, INPUT_CHANGE_TIMEOUT)} subscription={{values: true}} />
-    )
-  }
-
   render() {
     return (
       <div>
@@ -142,38 +137,37 @@ export default class GenerateKey extends React.Component {
             Reset master key
           </a>
         </div>
-        <Form
+        <Formik
           onSubmit={this.handlePasswordGeneration.bind(this)}
-          initialValues={{counter: 1, template: 'long'}}
+          initialValues={
+            {
+              site: '',
+              counter: 1,
+              template: 'long'
+            }
+          }
           validate={validate}
-          subscription={{submitting: true}}
-          render={({handleSubmit, pristine, submitting, form}) => (
-            <form
-              onSubmit={handleSubmit}>
-              {this.useAutoSubmit(handleSubmit)}
+          render={({submitForm, isSubmitting, dirty, handleReset}) => (
+            <Form onChange={_debounce(submitForm, INPUT_CHANGE_TIMEOUT)}>
               <Field
                 name="site"
                 type="text"
-                component={FormField}
-                inputProps={{
-                  autoFocus: true,
-                  autoComplete: 'off',
-                  autoCorrect: 'off',
-                  autoCapitalize: 'none'
-                }}
                 label="Site"
+                component={FormField}
+                autoFocus={true}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
               />
               <Field
                 name="counter"
                 type="number"
                 component={FormField}
-                inputProps={{
-                  step: 1,
-                  min: 1,
-                  max: 1000,
-                  pattern: '[0-9]*'
-                }}
                 label="Counter"
+                step={1}
+                min={1}
+                max={1000}
+                pattern="[0-9]*"
               />
               <Field
                 name="template"
@@ -183,18 +177,18 @@ export default class GenerateKey extends React.Component {
               />
               <div className="generate-pass__buttons-wrapper">
                 <button className={classnames('generate-pass__submit-button', {
-                  'generate-pass__submit-button--disabled': submitting
-                })} type="submit" disabled={submitting}>
+                  'generate-pass__submit-button--disabled': isSubmitting
+                })} type="submit" disabled={isSubmitting}>
                   Generate Password
                 </button>
                 <button className={classnames('generate-pass__reset-button', {
-                  'generate-pass__reset-button--disabled': pristine || submitting
-                })} type="button" disabled={pristine || submitting}
-                onClick={() => this.handleResetPassword(form.reset)}>
+                  'generate-pass__reset-button--disabled': !dirty || isSubmitting
+                })} type="button" disabled={!dirty || isSubmitting}
+                onClick={() => this.handleResetPassword(handleReset)}>
                   Clear Form
                 </button>
               </div>
-            </form>
+            </Form>
           )}
         />
         {this.renderPassword()}

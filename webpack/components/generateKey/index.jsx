@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Form, Field} from 'react-final-form'
+import {Formik, Field, Form} from 'formik'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import classnames from 'classnames'
@@ -25,44 +25,48 @@ export default class GenerateKey extends React.Component {
     onSubmitForm: PropTypes.func.isRequired
   }
 
-  handleGenerateKey(values) {
+  handleGenerateKey(values, {setSubmitting}) {
     this.props.onSubmitForm(values)
+    setSubmitting(false)
   }
 
   render() {
     const {isGeneratingKey} = this.props
 
     return (
-      <Form
-        onSubmit={this.handleGenerateKey.bind(this)}
-        initialValues={{version: 3}}
+      <Formik
+        initialValues={
+          {
+            name: '',
+            password: '',
+            version: 3
+          }
+        }
         validate={validate}
-        subscription={{submitting: true, pristine: true}}
-        render={({handleSubmit, pristine, submitting, form}) => (
+        onSubmit={this.handleGenerateKey.bind(this)}
+        render={({isSubmitting, dirty, handleReset}) => (
           <div>
-            <form onSubmit={handleSubmit}>
+            <Form>
               <Field
-                name="name"
                 type="text"
-                component={FormField}
-                inputProps={{
-                  autoFocus: true,
-                  autoComplete: 'on',
-                  autoCorrect: 'off',
-                  autoCapitalize: 'none'
-                }}
+                name="name"
                 label="Name"
+                component={FormField}
+                autoFocus={true}
+                autoComplete="on"
+                autoCorrect="off"
+                autoCapitalize="none"
               />
               <Field
-                name="password"
                 type="password"
-                component={FormField}
+                name="password"
                 label="Password"
+                component={FormField}
               />
               <Field
                 name="version"
-                component={FormDropdown}
                 label="Version"
+                component={FormDropdown}
                 options={[
                   {label: 'V3', value: 3},
                   {label: 'V2', value: 2},
@@ -72,17 +76,17 @@ export default class GenerateKey extends React.Component {
               />
               <div className="generate-key__buttons-wrapper">
                 <button className={classnames('generate-key__submit-button', {
-                  'generate-key__submit-button--disabled': submitting
-                })} type="submit" disabled={submitting}>
+                  'generate-key__submit-button--disabled': isSubmitting
+                })} type="submit" disabled={isSubmitting}>
                   Generate Master Key
                 </button>
                 <button className={classnames('generate-key__reset-button', {
-                  'generate-key__reset-button--disabled': pristine || submitting
-                })} type="button" disabled={pristine || submitting} onClick={form.reset}>
+                  'generate-key__reset-button--disabled': !dirty || isSubmitting
+                })} type="button" disabled={!dirty || isSubmitting} onClick={handleReset}>
                   Clear Form
                 </button>
               </div>
-            </form>
+            </Form>
             {isGeneratingKey && <Spinner />}
           </div>
         )}
