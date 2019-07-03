@@ -35,13 +35,11 @@ export default class GenerateKey extends React.Component {
 
     return (
       <Formik
-        initialValues={
-          {
-            name: '',
-            password: '',
-            version: 3
-          }
-        }
+        initialValues={{
+          name: '',
+          password: '',
+          version: 3
+        }}
         validate={validate}
         onSubmit={this.handleGenerateKey.bind(this)}
         render={({isSubmitting, dirty, handleReset}) => (

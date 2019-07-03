@@ -139,13 +139,11 @@ export default class GenerateKey extends React.Component {
         </div>
         <Formik
           onSubmit={this.handlePasswordGeneration.bind(this)}
-          initialValues={
-            {
-              site: '',
-              counter: 1,
-              template: 'long'
-            }
-          }
+          initialValues={{
+            site: '',
+            counter: 1,
+            template: 'long'
+          }}
           validate={validate}
           render={({submitForm, isSubmitting, dirty, handleReset}) => (
             <Form onChange={_debounce(submitForm, INPUT_CHANGE_TIMEOUT)}>

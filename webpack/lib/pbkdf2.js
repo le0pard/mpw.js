@@ -23,12 +23,13 @@ const pbkdf2 = (password, salt, iter, keyLen, hash) => {
     case 'SHA-512':
       hashAlg = crypto.algo.SHA512
       break
-    default:
+    default: {
       let err = new Error(
         'A parameter or an operation is not supported by the underlying object'
       )
       err.name = 'InvalidAccessError'
       return Promise.reject(err)
+    }
   }
 
   return new Promise((resolve) => {
