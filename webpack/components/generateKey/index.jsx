@@ -42,7 +42,7 @@ export default class GenerateKey extends React.Component {
         }}
         validate={validate}
         onSubmit={this.handleGenerateKey.bind(this)}
-        render={({isSubmitting, dirty, handleReset}) => (
+      >{({isSubmitting, dirty, handleReset}) => (
           <div>
             <Form>
               <Field
@@ -88,7 +88,7 @@ export default class GenerateKey extends React.Component {
             {isGeneratingKey && <Spinner />}
           </div>
         )}
-      />
+      </Formik>
     )
   }
 }

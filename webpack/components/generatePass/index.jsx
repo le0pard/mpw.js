@@ -145,7 +145,7 @@ export default class GenerateKey extends React.Component {
             template: 'long'
           }}
           validate={validate}
-          render={({submitForm, isSubmitting, dirty, handleReset}) => (
+        >{({submitForm, isSubmitting, dirty, handleReset}) => (
             <Form onChange={_debounce(submitForm, INPUT_CHANGE_TIMEOUT)}>
               <Field
                 name="site"
@@ -188,7 +188,7 @@ export default class GenerateKey extends React.Component {
               </div>
             </Form>
           )}
-        />
+        </Formik>
         {this.renderPassword()}
       </div>
     )
