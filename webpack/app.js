@@ -2,7 +2,7 @@ import './init'
 import React from 'react'
 import ReactDom from 'react-dom'
 import Root from './root'
-import {APP_THEMES_LIGHT} from 'reducers/settings/constants'
+import {APP_THEMES_LIGHT, APP_THEMES_DARK} from 'reducers/settings/constants'
 import LocalStorage from 'lib/localStorage'
 import {initializeStore} from './redux/store'
 import {initServiceWorker} from './sw'
@@ -20,12 +20,23 @@ const renderApp = (Component, appRoot, store) => {
     })
 }
 
-const prepareStoreData = () => ({
-  settings: {
-    hidePassword: LocalStorage.getItem('hidePassword') || false,
-    theme: LocalStorage.getItem('theme') || APP_THEMES_LIGHT
+const prepareStoreData = () => {
+  let theme = LocalStorage.getItem('theme')
+
+  if (!theme) {
+    if (window.matchMedia('(prefers-color-scheme: dark)')?.matches) {
+      theme = APP_THEMES_DARK
+    }
   }
-})
+
+  return {
+    settings: {
+      hidePassword: LocalStorage.getItem('hidePassword') || false,
+      theme: theme || APP_THEMES_LIGHT
+    }
+  }
+}
+
 // init store and start app
 const appRoot = document.getElementById('app-root')
 const store = initializeStore(prepareStoreData())
