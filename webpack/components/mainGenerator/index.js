@@ -13,5 +13,4 @@ const MainGenerator = () => {
   }
 }
 
-
 export default MainGenerator

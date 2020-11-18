@@ -1,4 +1,4 @@
-import crypto from 'crypto-es'
+import crypto from 'crypto-js'
 import scrypt from './scrypt'
 import {TextEncoder as TextEncoderPolyfill} from 'text-encoding'
 

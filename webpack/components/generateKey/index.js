@@ -9,7 +9,6 @@ import Spinner from 'components/spinner'
 
 import './generate-key.sass'
 
-
 const validate = (values) => {
   const errors = {}
   if (!values.name) {

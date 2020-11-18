@@ -80,7 +80,7 @@ const GenerateKey = () => {
     LocalStorage.setItem('hidePassword', e.target.checked)
   }
 
-  const displayPassword = (password, hidePassword) => {
+  const displayPassword = () => {
     if (hidePassword) {
       return _times(password.length, () => '*').join('')
     } else {
@@ -116,7 +116,7 @@ const GenerateKey = () => {
               type="text"
               onFocus={(e) => e.target.select()}
               readOnly={true}
-              value={displayPassword(password, hidePassword)} />
+              value={displayPassword()} />
             <div>
               <input
                 className="generate-pass__password-visibility-input"

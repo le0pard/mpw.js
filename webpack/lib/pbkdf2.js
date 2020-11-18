@@ -1,5 +1,5 @@
 // https://github.com/golang/crypto/blob/master/pbkdf2/pbkdf2.go
-import crypto from 'crypto-es'
+import crypto from 'crypto-js'
 
 const pbkdf2 = (password, salt, iter, keyLen, hash) => {
   let hashAlg = null
