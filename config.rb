@@ -2,12 +2,7 @@
 Encoding.default_external = Encoding::UTF_8
 Encoding.default_internal = Encoding::UTF_8
 
-# Activate and configure extensions
-# https://middlemanapp.com/advanced/configuration/#configuring-extensions
-
-# activate :autoprefixer do |prefix|
-#   prefix.browsers = "last 2 versions"
-# end
+require "lib/middleman_patches"
 
 # Layouts
 # https://middlemanapp.com/basics/layouts/
@@ -25,15 +20,16 @@ page '/404.html', layout: false
 require "lib/mpw_helpers"
 helpers MpwHelpers
 
-assets_dir = ::File.expand_path('../.tmp/dist', __FILE__)
+assets_dir = File.expand_path('.tmp/dist', __dir__)
 
 activate :external_pipeline,
   name: :webpack,
   command: build? ?
-    "./node_modules/.bin/gulp cleanup:assets && NODE_ENV=production ./node_modules/.bin/webpack --bail" :
-    './node_modules/.bin/webpack --watch --color',
+    "yarn run assets:build" :
+    'yarn run assets:watch',
   source: assets_dir,
-  latency: 1
+  latency: 2,
+  ignore_exit_code: true
 
 # With alternative layout
 # page '/path/to/file.html', layout: 'other_layout'
@@ -73,16 +69,9 @@ set :encoding, "utf-8"
 
 set :images_dir, 'images'
 
-activate :gzip, exts: %w(.css .htm .html .js .svg .xhtml)
-
 configure :build do
-  # min html
+    # min html
   activate :minify_html
-end
-
-# deploy
-activate :deploy do |deploy|
-  deploy.deploy_method = :git
-  deploy.branch = 'gh-pages'
-  deploy.clean = true
+  # gzip
+  activate :gzip, exts: %w(.css .htm .html .js .svg .xhtml)
 end
