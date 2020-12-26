@@ -1,12 +1,12 @@
 {
-  "app-0d796c1291ae2a78f839.js.LICENSE.txt": "/app-0d796c1291ae2a78f839.js.LICENSE.txt",
-  "app-0d796c1291ae2a78f839.js.map": "/app-0d796c1291ae2a78f839.js.map",
   "app-42c64c8a545ed5bb7664.css.map": "/app-42c64c8a545ed5bb7664.css.map",
+  "app-9ff53cb06134d62c7730.js.LICENSE.txt": "/app-9ff53cb06134d62c7730.js.LICENSE.txt",
+  "app-9ff53cb06134d62c7730.js.map": "/app-9ff53cb06134d62c7730.js.map",
   "app.css": "/app-42c64c8a545ed5bb7664.css",
-  "app.js": "/app-0d796c1291ae2a78f839.js",
+  "app.js": "/app-9ff53cb06134d62c7730.js",
   "sw.js": "/sw.js",
   "sw.js.map": "/sw.js.map",
-  "web-worker-7ef445928d733c39fe85.js.LICENSE.txt": "/web-worker-7ef445928d733c39fe85.js.LICENSE.txt",
-  "web-worker-7ef445928d733c39fe85.js.map": "/web-worker-7ef445928d733c39fe85.js.map",
-  "web-worker.js": "/web-worker-7ef445928d733c39fe85.js"
+  "web-worker-e9605a5906d25a29f035.js.LICENSE.txt": "/web-worker-e9605a5906d25a29f035.js.LICENSE.txt",
+  "web-worker-e9605a5906d25a29f035.js.map": "/web-worker-e9605a5906d25a29f035.js.map",
+  "web-worker.js": "/web-worker-e9605a5906d25a29f035.js"
 }
