@@ -13,7 +13,6 @@
       img-src 'self' data:; media-src 'none'; frame-src 'none'; font-src 'self' data:;
       connect-src 'none'; form-action 'none'; worker-src 'self'\">" : '' %>
     <link rel="manifest" href="/manifest.json" />
-    <link rel="preload" href="<%= asset_path('app.css') %>" as="style" />
     <title>
       <%= current_page.data.title || "Master Password Generator" %>
     </title>
