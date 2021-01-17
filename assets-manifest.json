@@ -1,12 +1,42 @@
 {
-  "app-b5aa6bcb4e87308a5fda.js.LICENSE.txt": "/app-b5aa6bcb4e87308a5fda.js.LICENSE.txt",
-  "app-b5aa6bcb4e87308a5fda.js.map": "/app-b5aa6bcb4e87308a5fda.js.map",
-  "app-e768e8d2bc29faeba1f5.css.map": "/app-e768e8d2bc29faeba1f5.css.map",
-  "app.css": "/app-e768e8d2bc29faeba1f5.css",
-  "app.js": "/app-b5aa6bcb4e87308a5fda.js",
-  "sw.js": "/sw.js",
-  "sw.js.map": "/sw.js.map",
-  "web-worker-adfe8a95c37f00b1fbb1.js.LICENSE.txt": "/web-worker-adfe8a95c37f00b1fbb1.js.LICENSE.txt",
-  "web-worker-adfe8a95c37f00b1fbb1.js.map": "/web-worker-adfe8a95c37f00b1fbb1.js.map",
-  "web-worker.js": "/web-worker-adfe8a95c37f00b1fbb1.js"
+  "app-b5aa6bcb4e87308a5fda.js.LICENSE.txt": {
+    "src": "/app-b5aa6bcb4e87308a5fda.js.LICENSE.txt",
+    "integrity": "sha256-BUW5UrX8O/RmWimU1OgomPDvPqGaAkD/nVe2Cj9l9hM="
+  },
+  "app-b5aa6bcb4e87308a5fda.js.map": {
+    "src": "/app-b5aa6bcb4e87308a5fda.js.map",
+    "integrity": "sha256-Yh/7vae4oTiqxHDrzgPXN4jxuLA41so/hO2p4EPb3G8="
+  },
+  "app-e768e8d2bc29faeba1f5.css.map": {
+    "src": "/app-e768e8d2bc29faeba1f5.css.map",
+    "integrity": "sha256-bcSTRjZBBvB5xthU5B4NMzFaW8gdJhEfWDu2xklckjI="
+  },
+  "app.css": {
+    "src": "/app-e768e8d2bc29faeba1f5.css",
+    "integrity": "sha256-D5iO3J/72UeuI7Zw+2tuHeUALWs2eIyXt2t0zIqMMys="
+  },
+  "app.js": {
+    "src": "/app-b5aa6bcb4e87308a5fda.js",
+    "integrity": "sha256-JspA7n1QK9WH/9TyiFvEsPFW4Cx9hfUeCfTzPdAJ4/I="
+  },
+  "sw.js": {
+    "src": "/sw.js",
+    "integrity": "sha256-pKt4czWEEV4em3CojWtOnv3xxkv/AGJfbLNZvX9mE30="
+  },
+  "sw.js.map": {
+    "src": "/sw.js.map",
+    "integrity": "sha256-2FbnTZP8yyVitPJHeR4k3eKxyFe6oTNtY1l0Lk9dVso="
+  },
+  "web-worker-adfe8a95c37f00b1fbb1.js.LICENSE.txt": {
+    "src": "/web-worker-adfe8a95c37f00b1fbb1.js.LICENSE.txt",
+    "integrity": "sha256-cczM8BQg9tZMHi+GOF8eOlv4mBr1ySIM+WQWN8tAHPM="
+  },
+  "web-worker-adfe8a95c37f00b1fbb1.js.map": {
+    "src": "/web-worker-adfe8a95c37f00b1fbb1.js.map",
+    "integrity": "sha256-zKwqKrzirfSHSRWodbiuEEKR5L+a490ZzfWEOEFUSnI="
+  },
+  "web-worker.js": {
+    "src": "/web-worker-adfe8a95c37f00b1fbb1.js",
+    "integrity": "sha256-ccWSrFBfrTj0bJckNuEuiIfOyIliKu0AVmE0/2CovBE="
+  }
 }
