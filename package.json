@@ -29,6 +29,7 @@
     "crypto-browserify": "^3.12.0",
     "crypto-js": "3.3.0",
     "css-loader": "5.0.1",
+    "css-minimizer-webpack-plugin": "^1.2.0",
     "cssnano": "4.1.10",
     "del": "6.0.0",
     "fbjs": "^3.0.0",
