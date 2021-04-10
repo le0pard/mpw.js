@@ -41,7 +41,7 @@ const AppLayout = ({location: {pathname}, route}) => {
               <Link className="app__navigation__link" to="/algorithm">How it works</Link>}
           </div>
           <div className="app__navigation__item">
-            <ThemeSwitcher className="app__navigation__link" />
+            <ThemeSwitcher />
           </div>
         </nav>
 
