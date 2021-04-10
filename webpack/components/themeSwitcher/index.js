@@ -22,9 +22,7 @@ const ThemeSwitcher = () => {
     }
   }, [theme])
 
-  const handleToggleTheme = (e) => {
-    e.preventDefault()
-
+  const handleToggleTheme = () => {
     dispatch(settingsToggleTheme())
     LocalStorage.setItem(
       'theme',
@@ -59,8 +57,8 @@ const ThemeSwitcher = () => {
           id="theme-toggle"
           name="theme-toggle"
           type="checkbox"
-          checked={isDarkThemeActive}
-          onClick={handleToggleTheme}
+          defaultChecked={isDarkThemeActive}
+          onChange={handleToggleTheme}
         />
       </div>
     </label>
