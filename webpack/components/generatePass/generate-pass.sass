@@ -22,7 +22,7 @@
   border: 1px solid var(--commentColor)
   height: $button-height
 
-  &:focus
+  &:focus:not(:focus-visible)
     outline: none
 
   &:active
@@ -40,7 +40,7 @@
   border: 1px solid var(--commentColor)
   height: $button-height
 
-  &:focus
+  &:focus:not(:focus-visible)
     outline: none
 
   &:active
@@ -68,8 +68,8 @@
   background-color: var(--inputBg)
   box-sizing: border-box
 
-  &:focus
-    outline: 0
+  &:focus:not(:focus-visible)
+    outline: none
 
 .generate-pass__password-visibility-input
   margin: 0.5rem
@@ -85,7 +85,7 @@
   height: 3.3rem
   vertical-align: middle
 
-  &:focus
+  &:focus:not(:focus-visible)
     outline: none
 
   &:active

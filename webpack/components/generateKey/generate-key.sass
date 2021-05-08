@@ -12,7 +12,7 @@
   border: 1px solid var(--commentColor)
   height: $button-height
 
-  &:focus
+  &:focus:not(:focus-visible)
     outline: none
 
   &:active
@@ -30,7 +30,7 @@
   border: 1px solid var(--commentColor)
   height: $button-height
 
-  &:focus
+  &:focus:not(:focus-visible)
     outline: none
 
   &--disabled
