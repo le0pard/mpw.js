@@ -21,22 +21,22 @@
   },
   "sw.js": {
     "src": "/sw.js",
-    "integrity": "sha256-xmyr2cL0y1IljD6hbXNfkgKamF/LRJluTylk8jGXtdE="
+    "integrity": "sha256-4z6IwigCg8PPDfaPRrxrr/C5Yq31fQflheJsDdXLC6E="
   },
   "sw.js.map": {
     "src": "/sw.js.map",
-    "integrity": "sha256-9AXUne60BAqGrB9v/zF1aGevtvg+JHEH7fKVX7h+Tdg="
+    "integrity": "sha256-L7K7VPfJHcqnEllzOF8DgjXLd92RHiQmVhBBBRekV7I="
   },
-  "web-worker-9f892bcd1758a777843b.js.LICENSE.txt": {
-    "src": "/web-worker-9f892bcd1758a777843b.js.LICENSE.txt",
+  "web-worker-a8486d39e9753ae0d55a.js.LICENSE.txt": {
+    "src": "/web-worker-a8486d39e9753ae0d55a.js.LICENSE.txt",
     "integrity": "sha256-cczM8BQg9tZMHi+GOF8eOlv4mBr1ySIM+WQWN8tAHPM="
   },
-  "web-worker-9f892bcd1758a777843b.js.map": {
-    "src": "/web-worker-9f892bcd1758a777843b.js.map",
-    "integrity": "sha256-Fc8MMXI+Z1+XI30g/XJYMJv2GtE+OsoEUDacXtg/OlA="
+  "web-worker-a8486d39e9753ae0d55a.js.map": {
+    "src": "/web-worker-a8486d39e9753ae0d55a.js.map",
+    "integrity": "sha256-qp2LDD0I/WuSnbhYigzBuTRB6TpX3yxLD08vIpkqMYc="
   },
   "web-worker.js": {
-    "src": "/web-worker-9f892bcd1758a777843b.js",
-    "integrity": "sha256-8e8qi5OLV5fsJ/L4gAmL1YCi0sK5ik9v19x5YdhR5cI="
+    "src": "/web-worker-a8486d39e9753ae0d55a.js",
+    "integrity": "sha256-pnyQZ+MNjFYWsopqTw84ZL64+KS32J0PynKFFkYjfuE="
   }
 }
