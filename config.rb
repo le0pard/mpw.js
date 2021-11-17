@@ -20,6 +20,8 @@ page '/404.html', layout: false
 require "lib/mpw_helpers"
 helpers MpwHelpers
 
+proxy '/algorithm.html', '/index.html'
+
 assets_dir = File.expand_path('.tmp/dist', __dir__)
 
 activate :external_pipeline,

@@ -1,22 +1,17 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import GithubCorner from 'components/githubCorner'
 import AppUpdate from 'components/appUpdate'
 import ThemeSwitcher from 'components/themeSwitcher'
 import classnames from 'classnames'
 import {matchPath} from 'react-router'
-import {Link} from 'react-router-dom'
-import {renderRoutes} from 'react-router-config'
+import {Link, useLocation, Outlet} from 'react-router-dom'
 
 import './app.sass'
 
-const AppLayout = ({location: {pathname}, route}) => {
+const AppLayout = () => {
+  const location = useLocation()
   const isActive = (path) => (
-    matchPath(pathname, {
-      path,
-      exact: true,
-      strict: false
-    })
+    matchPath(path, location.pathname)
   )
 
   return (
@@ -34,11 +29,11 @@ const AppLayout = ({location: {pathname}, route}) => {
           </div>
           <div
             className={classnames('app__navigation__big-item', {
-              'app__navigation__item--active': isActive('/algorithm')
+              'app__navigation__item--active': isActive('/algorithm.html')
             })}>
-            {isActive('/algorithm') ?
+            {isActive('/algorithm.html') ?
               <div className="app__navigation__active-item">How it works</div> :
-              <Link className="app__navigation__link" to="/algorithm">How it works</Link>}
+              <Link className="app__navigation__link" to="/algorithm.html">How it works</Link>}
           </div>
           <div className="app__navigation__item">
             <ThemeSwitcher />
@@ -46,22 +41,11 @@ const AppLayout = ({location: {pathname}, route}) => {
         </nav>
 
         <AppUpdate />
-        {renderRoutes(route.routes)}
+
+        <Outlet />
       </main>
     </div>
   )
-}
-
-AppLayout.propTypes = {
-  route: PropTypes.shape({
-    routes: PropTypes.oneOfType([
-      PropTypes.object,
-      PropTypes.array
-    ]).isRequired
-  }).isRequired,
-  location: PropTypes.shape({
-    pathname: PropTypes.string.isRequired
-  }).isRequired
 }
 
 export default AppLayout
