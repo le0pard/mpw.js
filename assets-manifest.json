@@ -21,11 +21,11 @@
   },
   "sw.js": {
     "src": "/sw.js",
-    "integrity": "sha256-XlJ+ayd/KdFks8Sj08Yho0HSh3zRkSF/xDYUcrfxEKA="
+    "integrity": "sha256-HNv4dtiu9AiYCYpSBcLD6Cv1l4SM/igk2I7lIk6TsUI="
   },
   "sw.js.map": {
     "src": "/sw.js.map",
-    "integrity": "sha256-213wq+FydoD4bUZrLFdcgahlPXH9psFfFcrifWR/LMc="
+    "integrity": "sha256-VPpcT/vKvAD97OEeC0uwNjMJkt4pzESl8bTFU0mcHy8="
   },
   "web-worker-64aba9b3a6a010b7bfdf.js.LICENSE.txt": {
     "src": "/web-worker-64aba9b3a6a010b7bfdf.js.LICENSE.txt",
