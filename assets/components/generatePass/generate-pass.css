@@ -1,0 +1,102 @@
+.generate-pass__reset-wrapper {
+  lost-flex-container: row;
+  lost-align: right;
+  height: 1.2rem;
+}
+
+.generate-pass__reset-link {
+  lost-column: 2/3;
+  text-align: right;
+  padding: 0 1rem 0.5rem 0;
+}
+
+.generate-pass__buttons-wrapper {
+  lost-flex-container: row;
+}
+
+.generate-pass__submit-button {
+  lost-column: 2/3 3 0.2rem;
+  lost-align: center;
+  text-align: center;
+  background-color: var(--headsColor);
+  color: var(--baseColor);
+  border: 1px solid var(--commentColor);
+  height: 2.6rem;
+}
+.generate-pass__submit-button:focus:not(:focus-visible) {
+  outline: none;
+}
+.generate-pass__submit-button:active {
+  border-width: 2px;
+}
+.generate-pass__submit-button--disabled {
+  background-color: var(--commentColor);
+}
+
+.generate-pass__reset-button {
+  lost-column: 1/3 3 0.2rem;
+  lost-align: center;
+  text-align: center;
+  background-color: var(--bgColor);
+  color: var(--baseColor);
+  border: 1px solid var(--commentColor);
+  height: 2.6rem;
+}
+.generate-pass__reset-button:focus:not(:focus-visible) {
+  outline: none;
+}
+.generate-pass__reset-button:active {
+  border-width: 2px;
+}
+.generate-pass__reset-button--disabled {
+  background-color: var(--commentColor);
+}
+
+.generate-pass__result-title {
+  text-align: center;
+  padding: 0.5rem 0;
+}
+
+.generate-pass__result-wrapper {
+  lost-flex-container: row;
+}
+
+.generate-pass__result-inputs {
+  lost-column: 3/4 4 0.2rem;
+}
+
+.generate-pass__result-password {
+  width: 100%;
+  font-size: 1.8rem;
+  color: var(--inputColor);
+  border-radius: 6px;
+  border: 1px solid var(--inputBorder);
+  background-color: var(--inputBg);
+  box-sizing: border-box;
+}
+.generate-pass__result-password:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.generate-pass__password-visibility-input {
+  margin: 0.5rem;
+}
+
+.generate-pass__password-visibility-label {
+  vertical-align: middle;
+}
+
+.generate-pass__result-copy-button {
+  lost-column: 1/4 4 0.2rem;
+  background-color: var(--bgColor);
+  color: var(--baseColor);
+  border: 1px solid var(--commentColor);
+  height: 3.3rem;
+  vertical-align: middle;
+}
+.generate-pass__result-copy-button:focus:not(:focus-visible) {
+  outline: none;
+}
+.generate-pass__result-copy-button:active {
+  border-width: 2px;
+}

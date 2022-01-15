@@ -12,7 +12,6 @@
       script-src 'self'; style-src 'self' 'unsafe-inline' 'unsafe-eval';
       img-src 'self' data:; media-src 'none'; frame-src 'none'; font-src 'self' data:;
       connect-src 'none'; form-action 'none'; worker-src 'self'\">" : '' %>
-    <link rel="manifest" href="/manifest.json" />
     <title>
       <%= current_page.data.title || "Master Password Generator" %>
     </title>
@@ -22,7 +21,7 @@
     <link rel="icon" href="/favicon.ico" sizes="any" /><!-- 32×32 -->
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" /><!-- 180×180 -->
-    <link rel="manifest" href="/manifest.json" />
+    <link rel="manifest" href="/manifest.webmanifest" />
 
   </head>
   <body>

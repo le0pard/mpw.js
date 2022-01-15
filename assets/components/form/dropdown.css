@@ -1,0 +1,25 @@
+.form-dropdown {
+  margin-bottom: 0.6rem;
+}
+.form-dropdown__wrapper {
+  width: 100%;
+  font-size: 1.8rem;
+}
+.form-dropdown__select {
+  box-sizing: border-box;
+  color: var(--inputColor);
+  border-radius: 6px;
+  border: 1px solid var(--inputBorder);
+  background-color: var(--inputBg);
+}
+.form-dropdown__select:focus:not(:focus-visible) {
+  outline: none;
+}
+.form-dropdown__label {
+  padding-right: 0.4rem;
+}
+.form-dropdown__error {
+  lost-row: 1;
+  color: #dc322f;
+  font-size: 1rem;
+}
