@@ -15,7 +15,7 @@
     <title>
       <%= current_page.data.title || "Master Password Generator" %>
     </title>
-    <%= stylesheet_pack_tag "app" %>
+    <%= external_pipeline_stylesheet_tag :webpack, ['app.css', 'src'], media: 'all' %>
 
     <!-- favicons -->
     <link rel="icon" href="/favicon.ico" sizes="any" /><!-- 32×32 -->
@@ -26,6 +26,6 @@
   </head>
   <body>
     <%= yield %>
-    <%= javascript_pack_tag "app" %>
+    <%= external_pipeline_javascript_tag :webpack, ['app.js', 'src'], defer: 'defer' %>
   </body>
 </html>
