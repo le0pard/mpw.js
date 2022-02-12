@@ -1,5 +1,6 @@
 .form-field {
-  lost-flex-container: row;
+  display: flex;
+  flex-flow: row wrap;
   margin-bottom: 0.6rem;
 }
 

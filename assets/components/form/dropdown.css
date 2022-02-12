@@ -1,10 +1,12 @@
 .form-dropdown {
   margin-bottom: 0.6rem;
 }
+
 .form-dropdown__wrapper {
   width: 100%;
   font-size: 1.8rem;
 }
+
 .form-dropdown__select {
   box-sizing: border-box;
   color: var(--inputColor);
@@ -12,14 +14,24 @@
   border: 1px solid var(--inputBorder);
   background-color: var(--inputBg);
 }
+
 .form-dropdown__select:focus:not(:focus-visible) {
   outline: none;
 }
+
 .form-dropdown__label {
   padding-right: 0.4rem;
 }
+
 .form-dropdown__error {
-  lost-row: 1;
   color: #dc322f;
+  flex: 0 0 auto;
   font-size: 1rem;
+  height: 99.9%;
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.form-dropdown__error:last-child {
+  margin-bottom: 0;
 }
