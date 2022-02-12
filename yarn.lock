@@ -2666,6 +2666,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@csstools/postcss-progressive-custom-properties@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@csstools/postcss-progressive-custom-properties@npm:1.1.0"
+  dependencies:
+    postcss-value-parser: ^4.2.0
+  peerDependencies:
+    postcss: ^8.3
+  checksum: d8bb27f1fd83d3b5f3740cd9c85063c63178c765acf4af59cef62f5af90c46f49e5048a37e274f614cfd6b37c4d653a43b67ffb391fde306829997936bc76a24
+  languageName: node
+  linkType: hard
+
 "@discoveryjs/json-ext@npm:^0.5.0":
   version: 0.5.3
   resolution: "@discoveryjs/json-ext@npm:0.5.3"
@@ -9826,13 +9837,14 @@ __metadata:
   linkType: hard
 
 "postcss-lab-function@npm:^4.0.3":
-  version: 4.0.4
-  resolution: "postcss-lab-function@npm:4.0.4"
+  version: 4.1.0
+  resolution: "postcss-lab-function@npm:4.1.0"
   dependencies:
+    "@csstools/postcss-progressive-custom-properties": ^1.1.0
     postcss-value-parser: ^4.2.0
   peerDependencies:
     postcss: ^8.4
-  checksum: f4c3e1b77ecece162170e83dda9b645e4ac7fb50d9a61c6896183e441ee6af66bc4c19e158c8eb9efccb5450287fc74e9c9f4d29c95a00f0c85996078169f27f
+  checksum: cf48efa4e23a94a2c7c639b929e57b3ef1ccbb21f636d64ae571a1a72bb0538878c8239c95371e9372448e06890bc2010303e75cc8a715bd2323cc189895872e
   languageName: node
   linkType: hard
 
