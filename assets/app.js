@@ -1,6 +1,6 @@
 import './init'
 import React from 'react'
-import ReactDom from 'react-dom'
+import {createRoot} from 'react-dom/client'
 import Root from './root'
 import {APP_THEMES_LIGHT, APP_THEMES_DARK} from 'reducers/settings/constants'
 import LocalStorage from 'lib/localStorage'
@@ -12,12 +12,10 @@ const renderApp = (Component, appRoot, store) => {
   initWebWorker(appRoot, store)
   initServiceWorker(store)
 
-  ReactDom.render(
-    <Component store={store} />,
-    appRoot, () => {
-      // need to make this for feature tests - application ready for testing
-      window.__isAppReady = true
-    })
+  const root = createRoot(appRoot)
+  root.render(
+    <Component store={store} />
+  )
 }
 
 const prepareStoreData = () => {
