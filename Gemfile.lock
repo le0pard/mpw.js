@@ -120,7 +120,7 @@ GEM
     webrick (1.7.0)
 
 PLATFORMS
-  ruby
+  arm64-darwin-21
 
 DEPENDENCIES
   kramdown (>= 2.3.0)
