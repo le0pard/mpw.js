@@ -2,7 +2,7 @@
 
 MPW.js is a JavaScript implementation of the [Master Password](https://en.wikipedia.org/wiki/Master_Password) algorithm
 
-### Development
+## Development
 
 1. Install Ruby and Node.js (versions inside `.tool-versions`)
 2. Install [ruby bundler](http://bundler.io/) and [node.js yarn](https://yarnpkg.com/en/)
@@ -20,7 +20,7 @@ $ bundle exec middleman
 
 and visit `http://localhost:4567`
 
-### Deploy
+## Deploy
 
 ```bash
 $ bundle exec rake release
