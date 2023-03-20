@@ -29,8 +29,8 @@ cleanupOutdatedCaches()
 
 sha256(JSON.stringify(cachedAssets.sort())).then((rev) => {
   precacheAndRoute([
-    {url: '/index.html', revision: `${rev}-v1`},
-    {url: '/algorithm.html', revision: `${rev}-v1`},
+    {url: '/', revision: `${rev}-v1`},
+    {url: '/algorithm', revision: `${rev}-v1`},
     {url: '/manifest.webmanifest', revision: `${rev}-v1`}
   ])
 })

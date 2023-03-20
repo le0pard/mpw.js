@@ -12,6 +12,10 @@ export const routes = [{
       element: <Dashboard />
     },
     {
+      path: '/algorithm',
+      element: <AlgorithmPage />
+    }
+    {
       path: '/algorithm.html',
       element: <AlgorithmPage />
     }
