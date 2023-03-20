@@ -14,7 +14,7 @@ export const routes = [{
     {
       path: '/algorithm',
       element: <AlgorithmPage />
-    }
+    },
     {
       path: '/algorithm.html',
       element: <AlgorithmPage />
