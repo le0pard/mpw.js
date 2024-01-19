@@ -49,7 +49,7 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.1.1)
+    activesupport (7.1.3)
       base64
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
@@ -59,25 +59,25 @@ GEM
       minitest (>= 5.1)
       mutex_m
       tzinfo (~> 2.0)
-    addressable (2.8.5)
+    addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
-    base64 (0.1.1)
-    bigdecimal (3.1.4)
+    base64 (0.2.0)
+    bigdecimal (3.1.6)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     contracts (0.17)
     dotenv (2.8.1)
-    drb (2.1.1)
+    drb (2.2.0)
       ruby2_keywords
     erubis (2.7.0)
     execjs (2.7.0)
-    fastimage (2.2.7)
+    fastimage (2.3.0)
     ffi (1.16.3)
-    haml (6.2.3)
+    haml (6.3.0)
       temple (>= 0.8.2)
       thor
       tilt
@@ -93,20 +93,21 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     memoist (0.16.2)
-    minitest (5.20.0)
-    mutex_m (0.1.2)
-    oj (3.16.1)
+    minitest (5.21.2)
+    mutex_m (0.2.0)
+    oj (3.16.3)
+      bigdecimal (>= 3.0)
     padrino-helpers (0.15.3)
       i18n (>= 0.6.7, < 2)
       padrino-support (= 0.15.3)
       tilt (>= 1.4.1, < 3)
     padrino-support (0.15.3)
     pairing_heap (3.0.1)
-    parallel (1.23.0)
+    parallel (1.24.0)
     parslet (2.0.0)
-    public_suffix (5.0.3)
+    public_suffix (5.0.4)
     rack (2.2.8)
-    rake (13.0.6)
+    rake (13.1.0)
     rb-fsevent (0.11.2)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -121,7 +122,7 @@ GEM
     servolux (0.13.0)
     stream (0.5.5)
     temple (0.10.3)
-    terser (1.1.19)
+    terser (1.1.20)
       execjs (>= 0.3.0, < 3)
     thor (1.3.0)
     tilt (2.0.11)
@@ -144,4 +145,4 @@ DEPENDENCIES
   wdm (~> 0.1)
 
 BUNDLED WITH
-   2.4.13
+   2.5.3
