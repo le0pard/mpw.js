@@ -9,5 +9,6 @@ gem 'oj', '>= 2.10.4'           # faster JSON
 gem 'kramdown', '>= 2.3.0'     # faster markdown
 gem 'rake'
 
+gem 'csv'
 gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
 gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]

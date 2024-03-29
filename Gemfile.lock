@@ -70,6 +70,7 @@ GEM
     concurrent-ruby (1.2.3)
     connection_pool (2.4.1)
     contracts (0.17)
+    csv (3.3.0)
     dotenv (3.1.0)
     drb (2.2.1)
     erubis (2.7.0)
@@ -135,6 +136,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  csv
   kramdown (>= 2.3.0)
   middleman!
   middleman-minify-html!
