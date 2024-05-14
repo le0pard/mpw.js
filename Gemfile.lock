@@ -62,7 +62,7 @@ GEM
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     base64 (0.2.0)
-    bigdecimal (3.1.7)
+    bigdecimal (3.1.8)
     coffee-script (2.4.1)
       coffee-script-source
       execjs
@@ -71,7 +71,7 @@ GEM
     connection_pool (2.4.1)
     contracts (0.17)
     csv (3.3.0)
-    dotenv (3.1.1)
+    dotenv (3.1.2)
     drb (2.2.1)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -85,7 +85,7 @@ GEM
       concurrent-ruby (~> 1.0)
     hashie (5.0.0)
     htmlcompressor (0.4.0)
-    i18n (1.14.4)
+    i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     kramdown (2.4.0)
       rexml
