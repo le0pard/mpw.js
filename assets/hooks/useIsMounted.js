@@ -10,5 +10,5 @@ export const useIsMounted = () => {
     }
   }, [])
 
-  return mounted
+  return useCallback(() => mounted.current, [])
 }

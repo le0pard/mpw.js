@@ -15,14 +15,14 @@ const CopyButton = ({ text, className, label = 'Copy', successLabel = 'Copied', 
   useEffect(() => {
     const resetState = () => {
       setTimeout(() => {
-        if (clipboard.current && mounted.current) {
+        if (clipboard.current && mounted) {
           setCopiedSuccess(false)
           setCopiedError(false)
         }
       }, COPIED_TIMEOUT)
     }
 
-    if (mounted.current && copyButton.current) {
+    if (mounted && copyButton.current) {
       clipboard.current = new Clipboard(copyButton.current)
       clipboard.current.on('success', () => {
         setCopiedSuccess(true)
