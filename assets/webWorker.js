@@ -1,10 +1,10 @@
-import {actionTypes} from 'reducers/ww/constants'
-import {MPW, VERSION} from 'lib/mpw'
+import { actionTypes } from 'reducers/ww/constants'
+import { MPW, VERSION } from 'lib/mpw'
 
 let mpwObject = null
 
 const generateMpwKey = (successType, errorType, payload) => {
-  const {name, password, version} = payload
+  const { name, password, version } = payload
   const algorithmVersion = (() => {
     if (version && version.length) {
       return parseInt(version, 10)
@@ -26,7 +26,7 @@ const generateMpwKey = (successType, errorType, payload) => {
 }
 
 const generateMpwPassword = (successType, errorType, payload) => {
-  const {site, counter, template} = payload
+  const { site, counter, template } = payload
   if (!mpwObject) {
     return self.postMessage({
       type: errorType,

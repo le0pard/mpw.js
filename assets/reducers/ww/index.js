@@ -1,6 +1,6 @@
-import {combineReducers} from 'redux'
-import {createAction, createReducer} from 'redux-act'
-import {actionTypes} from './constants'
+import { combineReducers } from 'redux'
+import { createAction, createReducer } from 'redux-act'
+import { actionTypes } from './constants'
 
 export const generateKeyRequest = createAction(
   actionTypes.WW_GENERATE_KEY_REQUEST

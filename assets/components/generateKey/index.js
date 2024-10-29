@@ -1,7 +1,7 @@
 import React from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import {actionTypes} from 'reducers/ww/constants'
-import {Formik, Field, Form} from 'formik'
+import { useDispatch, useSelector } from 'react-redux'
+import { actionTypes } from 'reducers/ww/constants'
+import { Formik, Field, Form } from 'formik'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import classnames from 'classnames'
@@ -22,9 +22,9 @@ const validate = (values) => {
 
 const GenerateKey = () => {
   const dispatch = useDispatch()
-  const isGeneratingKey = useSelector(({ww}) => ww.isGeneratingKey)
+  const isGeneratingKey = useSelector(({ ww }) => ww.isGeneratingKey)
 
-  const handleGenerateKey = (values, {setSubmitting}) => {
+  const handleGenerateKey = (values, { setSubmitting }) => {
     dispatch({
       wwTypes: [
         actionTypes.WW_GENERATE_KEY_REQUEST,
@@ -45,7 +45,7 @@ const GenerateKey = () => {
       }}
       validate={validate}
       onSubmit={handleGenerateKey}
-    >{({isSubmitting, dirty, handleReset}) => (
+    >{({ isSubmitting, dirty, handleReset }) => (
         <div>
           <Form>
             <Field
@@ -69,10 +69,10 @@ const GenerateKey = () => {
               label="Version"
               component={FormDropdown}
               options={[
-                {label: 'V3', value: 3},
-                {label: 'V2', value: 2},
-                {label: 'V1', value: 1},
-                {label: 'V0', value: 0}
+                { label: 'V3', value: 3 },
+                { label: 'V2', value: 2 },
+                { label: 'V1', value: 1 },
+                { label: 'V0', value: 0 }
               ]}
             />
             <div className="generate-key__buttons-wrapper">

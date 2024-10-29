@@ -1,6 +1,6 @@
-import {getWebWorker} from '../../ww'
+import { getWebWorker } from '../../ww'
 
-const webWorkerMiddleware = ({dispatch}) => {
+const webWorkerMiddleware = ({ dispatch }) => {
   return next => action => {
     const {
       wwTypes,

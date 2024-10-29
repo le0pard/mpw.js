@@ -1,4 +1,4 @@
-import {MPW, MPW_NS} from '../mpw'
+import { MPW, MPW_NS } from '../mpw'
 
 test('simple check', () => {
   const mpw = new MPW('some user', 'some password')

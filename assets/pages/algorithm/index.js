@@ -1,6 +1,6 @@
 import React from 'react'
-import {useSelector} from 'react-redux'
-import {APP_THEMES_LIGHT} from 'reducers/settings/constants'
+import { useSelector } from 'react-redux'
+import { APP_THEMES_LIGHT } from 'reducers/settings/constants'
 import processLightImg from './process_light.svg'
 import processDarkImg from './process_dark.svg'
 
@@ -28,7 +28,7 @@ passWord[i] = passChar`
 )
 
 const AlgorithmPage = () => {
-  const theme = useSelector(({settings}) => settings.theme)
+  const theme = useSelector(({ settings }) => settings.theme)
   const processImage = (
     APP_THEMES_LIGHT === theme ? processLightImg : processDarkImg
   )

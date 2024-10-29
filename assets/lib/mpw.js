@@ -1,6 +1,6 @@
 import crypto from 'crypto-js'
 import scrypt from './scrypt'
-import {TextEncoder as TextEncoderPolyfill} from 'text-encoding'
+import { TextEncoder as TextEncoderPolyfill } from 'text-encoding'
 
 // A TextEncoder in UTF-8 to convert strings to `Uint8Array`s
 const TXTENCODER = (

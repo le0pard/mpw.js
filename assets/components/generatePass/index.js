@@ -1,13 +1,13 @@
-import React, {useEffect} from 'react'
-import {actionTypes} from 'reducers/ww/constants'
-import {resetPassword} from 'reducers/ww'
-import {useDispatch, useSelector} from 'react-redux'
-import {settingsTogglePassword} from 'reducers/settings'
+import React, { useEffect } from 'react'
+import { actionTypes } from 'reducers/ww/constants'
+import { resetPassword } from 'reducers/ww'
+import { useDispatch, useSelector } from 'react-redux'
+import { settingsTogglePassword } from 'reducers/settings'
 import LocalStorage from 'lib/localStorage'
 import _times from 'lodash/times'
 import _debounce from 'lodash/debounce'
 import classnames from 'classnames'
-import {Formik, Field, Form} from 'formik'
+import { Formik, Field, Form } from 'formik'
 import FormField from 'components/form/field'
 import FormDropdown from 'components/form/dropdown'
 import CopyButton from 'components/copyButton'
@@ -17,14 +17,14 @@ import './generate-pass.css'
 const INPUT_CHANGE_TIMEOUT = 150
 
 const INPUT_TEMPLATES = [
-  {label: 'PIN', value: 'pin'},
-  {label: 'Short', value: 'short'},
-  {label: 'Basic', value: 'basic'},
-  {label: 'Medium', value: 'medium'},
-  {label: 'Long', value: 'long'},
-  {label: 'Maximum', value: 'maximum'},
-  {label: 'Name', value: 'name'},
-  {label: 'Phrase', value: 'phrase'}
+  { label: 'PIN', value: 'pin' },
+  { label: 'Short', value: 'short' },
+  { label: 'Basic', value: 'basic' },
+  { label: 'Medium', value: 'medium' },
+  { label: 'Long', value: 'long' },
+  { label: 'Maximum', value: 'maximum' },
+  { label: 'Name', value: 'name' },
+  { label: 'Phrase', value: 'phrase' }
 ]
 
 const MPW_TEMPLATES = INPUT_TEMPLATES.map((t) => t.value)
@@ -51,14 +51,14 @@ const validate = (values) => {
 
 const GenerateKey = () => {
   const dispatch = useDispatch()
-  const password = useSelector(({ww}) => ww.password)
-  const hidePassword = useSelector(({settings}) => settings.hidePassword)
+  const password = useSelector(({ ww }) => ww.password)
+  const hidePassword = useSelector(({ settings }) => settings.hidePassword)
 
   useEffect(() => {
     return () => dispatch(resetPassword())
   }, [dispatch])
 
-  const handlePasswordGeneration = (values, {setSubmitting}) => {
+  const handlePasswordGeneration = (values, { setSubmitting }) => {
     dispatch({
       wwTypes: [
         actionTypes.WW_GENERATE_PASSWORD_REQUEST,
@@ -156,7 +156,7 @@ const GenerateKey = () => {
           template: 'long'
         }}
         validate={validate}
-      >{({submitForm, isSubmitting, dirty, handleReset}) => (
+      >{({ submitForm, isSubmitting, dirty, handleReset }) => (
           <Form onChange={_debounce(submitForm, INPUT_CHANGE_TIMEOUT)}>
             <Field
               name="site"
