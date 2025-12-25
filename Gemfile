@@ -10,5 +10,5 @@ gem 'kramdown', '>= 2.3.0'     # faster markdown
 gem 'rake'
 
 gem 'csv'
-gem 'tzinfo-data', platforms: [:mswin, :mingw, :jruby]
-gem 'wdm', '~> 0.1', platforms: [:mswin, :mingw]
+gem 'tzinfo-data', platforms: [:windows, :jruby]
+gem 'wdm', '~> 0.1', platforms: [:windows]
