@@ -8,6 +8,7 @@ gem 'middleman-minify-html', github: 'middleman/middleman-minify-html' # min htm
 gem 'oj', '>= 2.10.4'           # faster JSON
 gem 'kramdown', '>= 2.3.0'     # faster markdown
 gem 'rake'
+gem 'rdoc'
 
 gem 'csv'
 gem 'tzinfo-data', platforms: [:windows, :jruby]
