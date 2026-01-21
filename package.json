@@ -35,7 +35,7 @@
     "file-loader": "6.2.0",
     "focus-visible": "^5.2.1",
     "formik": "2.4.9",
-    "lodash": "4.17.21",
+    "lodash": "4.17.23",
     "mini-css-extract-plugin": "2.10.0",
     "normalize.css": "8.0.1",
     "postcss": "8.5.6",
